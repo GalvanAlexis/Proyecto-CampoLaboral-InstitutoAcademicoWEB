@@ -1,0 +1,97 @@
+-- Crear base de datos
+CREATE DATABASE instituto
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_general_ci;
+
+USE instituto;
+
+-- ========================
+-- TABLA: Alumnos
+-- ========================
+CREATE TABLE Alumnos (
+    ID_Alumno INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre_Completo VARCHAR(100) NOT NULL,
+    DNI VARCHAR(20) NOT NULL UNIQUE,
+    Email VARCHAR(100) NOT NULL UNIQUE
+) ENGINE=InnoDB;
+
+-- ========================
+-- TABLA: Profesores
+-- ========================
+CREATE TABLE Profesores (
+    ID_Profesor INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre_Completo VARCHAR(100) NOT NULL,
+    DNI VARCHAR(20) NOT NULL UNIQUE,
+    Email VARCHAR(100) NOT NULL UNIQUE
+) ENGINE=InnoDB;
+
+-- ========================
+-- TABLA: Categorías
+-- ========================
+CREATE TABLE Categorias (
+    ID_Categoria INT AUTO_INCREMENT PRIMARY KEY,
+    Categoria VARCHAR(100) NOT NULL UNIQUE
+) ENGINE=InnoDB;
+
+-- ========================
+-- TABLA: Carreras
+-- ========================
+CREATE TABLE Carreras (
+    ID_Carrera INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre_Carrera VARCHAR(100) NOT NULL,
+    ID_Categoria INT NOT NULL,
+    CONSTRAINT fk_carrera_categoria FOREIGN KEY (ID_Categoria)
+        REFERENCES Categorias(ID_Categoria)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- ========================
+-- TABLA: Turnos
+-- ========================
+CREATE TABLE Turnos (
+    ID_Turno INT AUTO_INCREMENT PRIMARY KEY,
+    Turno VARCHAR(50) NOT NULL,
+    ID_Profesor INT NOT NULL,
+    ID_Carrera INT NOT NULL,
+    CONSTRAINT fk_turno_profesor FOREIGN KEY (ID_Profesor)
+        REFERENCES Profesores(ID_Profesor)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+    CONSTRAINT fk_turno_carrera FOREIGN KEY (ID_Carrera)
+        REFERENCES Carreras(ID_Carrera)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- ========================
+-- TABLA: Usuarios
+-- ========================
+CREATE TABLE Usuarios (
+    Email VARCHAR(100) PRIMARY KEY,
+    Password VARCHAR(255) NOT NULL,
+    Rol ENUM('alumno','profesor','superadmin') NOT NULL
+) ENGINE=InnoDB;
+
+-- ========================
+-- TABLA: Inscripciones
+-- ========================
+CREATE TABLE Inscripciones (
+    ID_Alumno INT NOT NULL,
+    ID_Carrera INT NOT NULL,
+    ID_Turno INT NOT NULL,
+    Fecha_Inscripcion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (ID_Alumno, ID_Turno),
+    CONSTRAINT fk_inscripcion_alumno FOREIGN KEY (ID_Alumno)
+        REFERENCES Alumnos(ID_Alumno)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+    CONSTRAINT fk_inscripcion_carrera FOREIGN KEY (ID_Carrera)
+        REFERENCES Carreras(ID_Carrera)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+    CONSTRAINT fk_inscripcion_turno FOREIGN KEY (ID_Turno)
+        REFERENCES Turnos(ID_Turno)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
