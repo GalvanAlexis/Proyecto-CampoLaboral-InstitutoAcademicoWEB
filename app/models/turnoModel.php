@@ -19,12 +19,12 @@ class TurnoModel extends Model
     ];
 
     public function getTurnosConRelaciones()
-{
-    return $this->select('turnos.ID_Turno, turnos.Turno, profesores.Nombre_Completo, carreras.Nombre_Carrera')
+    {
+        return $this->select('turnos.ID_Turno, turnos.Turno, profesores.Nombre_Completo, carreras.Nombre_Carrera')
                 ->join('profesores', 'profesores.ID_Profesor = turnos.ID_Profesor')
                 ->join('carreras', 'carreras.ID_Carrera = turnos.ID_Carrera')
                 ->findAll();
-}
+    }
 
 }
 
