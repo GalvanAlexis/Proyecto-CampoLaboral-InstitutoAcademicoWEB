@@ -1,0 +1,98 @@
+/* Estilo general */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f5f9ff;
+  color: #333;
+}
+
+/* Header y navegación */
+header {
+  background: #003366;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header .logo {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+header .logo h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.2rem;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+  color: #66a3ff;
+}
+
+/* Sección principal */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(to right, #004080, #0066cc);
+  color: white;
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 900px;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  background: white;
+  color: #004080;
+  padding: 0.7rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s;
+}
+
+.btn:hover {
+  background: #004080;
+  color: white;
+}
+
+/* Footer */
+footer {
+  background: #002244;
+  color: #bbb;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
