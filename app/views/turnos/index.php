@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Listado de Turnos</title>
 </head>
+
 <body>
+
+    <?= $this->extend('templates/layout') ?>
+    <?= $this->section('content') ?>
+
     <h1>Listado de Turnos</h1>
 
     <a href="<?= site_url('turnos/create') ?>">➕ Nuevo Turno</a>
@@ -28,15 +34,19 @@
                         <td><?= $t['ID_Profesor'] ?></td>
                         <td><?= $t['ID_Carrera'] ?></td>
                         <td>
-                            <a href="<?= site_url('turnos/edit/'.$t['ID_Turno']) ?>">✏️ Editar</a> | 
-                            <a href="<?= site_url('turnos/delete/'.$t['ID_Turno']) ?>" onclick="return confirm('¿Seguro que quieres eliminar este turno?')">🗑️ Eliminar</a>
+                            <a href="<?= site_url('turnos/edit/' . $t['ID_Turno']) ?>">✏️ Editar</a> |
+                            <a href="<?= site_url('turnos/delete/' . $t['ID_Turno']) ?>" onclick="return confirm('¿Seguro que quieres eliminar este turno?')">🗑️ Eliminar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>
-                <tr><td colspan="5">No hay turnos registrados.</td></tr>
+                <tr>
+                    <td colspan="5">No hay turnos registrados.</td>
+                </tr>
             <?php endif; ?>
         </tbody>
     </table>
+    <?= $this->endSection() ?>
 </body>
+
 </html>
