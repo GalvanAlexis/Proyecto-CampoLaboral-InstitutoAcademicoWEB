@@ -1,0 +1,105 @@
+# Guía de uso de ramas en GitHub
+
+Este documento explica el flujo de trabajo recomendado para que los usuarios trabajen en ramas sin modificar directamente la rama `main`.
+
+---
+
+## 1. Preparar el entorno
+Antes de cambiar de rama, guardar el trabajo actual:
+
+```bash
+git status              # Verificar si hay cambios pendientes
+git add .
+git commit -m "WIP: guardo cambios antes de cambiar de rama"
+# o si no quieren commitear aún:
+git stash push -m "WIP: cambios temporales"
+```
+
+---
+
+## 2. Actualizar `main`
+La rama `main` debe estar siempre limpia y actualizada:
+
+```bash
+git checkout main
+git pull origin main
+```
+
+---
+
+## 3. Crear una nueva rama de usuario
+Cada persona debe trabajar en su propia rama. Por ejemplo:
+
+```bash
+git checkout -b branch-usuario
+```
+
+Subirla al remoto para que quede registrada:
+
+```bash
+git push -u origin branch-usuario
+```
+
+---
+
+## 4. Trabajar en la rama
+Modificar archivos, agregar cambios y commitear:
+
+```bash
+git add .
+git commit -m "Descripción breve de lo que hice en branch-usuario"
+git push
+```
+
+---
+
+## 5. Mantener la rama al día con `main`
+Antes de integrar a `main`, traer lo último de `main`:
+
+```bash
+git checkout branch-usuario
+git fetch origin
+git merge origin/main
+# Resolver conflictos si aparecen
+git add .
+git commit
+git push
+```
+
+---
+
+## 6. Crear el Pull Request (PR)
+En GitHub:
+- Base: `main`
+- Compare: `branch-usuario`
+- Poner título y descripción clara
+- Asignar reviewers
+
+---
+
+## 7. Revisar y mergear
+Cuando el PR esté aprobado:
+- Merge desde GitHub (merge commit o squash merge)
+- Borrar la rama remota si ya no se necesita
+
+---
+
+## 8. Limpiar ramas locales
+En la máquina de cada usuario:
+
+```bash
+git checkout main
+git pull origin main
+git branch -d branch-usuario
+git push origin --delete branch-usuario   # si no se borró desde GitHub
+```
+
+---
+
+## Resumen rápido (cheat sheet)
+1. `git checkout main && git pull origin main`  
+2. `git checkout -b branch-usuario`  
+3. Trabajar → `git add . && git commit -m "mensaje" && git push`  
+4. Antes de PR → `git merge origin/main`  
+5. Hacer PR en GitHub hacia `main`  
+6. Mergear y borrar la rama  
