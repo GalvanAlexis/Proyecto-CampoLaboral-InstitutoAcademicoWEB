@@ -5,6 +5,8 @@
     <title>Editar Turno</title>
 </head>
 <body>
+    <?= $this->extend('templates/layout') ?>
+    <?= $this->section('content') ?>
     <h1>Editar Turno</h1>
 
     <form method="post" action="<?= site_url('turnos/update/'.$turno['ID_Turno']) ?>">
@@ -22,5 +24,7 @@
 
     <br>
     <a href="<?= site_url('turnos') ?>">⬅️ Volver al listado</a>
+
+    <?= $this->endSection() ?>
 </body>
 </html>
