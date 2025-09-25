@@ -10,6 +10,7 @@
 
     <?= $this->extend('templates/layout') ?>
     <?= $this->section('content') ?>
+
     <h1>Listado de Turnos</h1>
 
     <a href="<?= site_url('turnos/create') ?>">➕ Nuevo Turno</a>
