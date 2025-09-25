@@ -46,6 +46,7 @@
             <?php endif; ?>
         </tbody>
     </table>
+
     <?= $this->endSection() ?>
 </body>
 
