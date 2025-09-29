@@ -1,48 +1,53 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Alumnos</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Listado de Alumnos</title>
 </head>
+
 <body>
-    <div class="container mt-5">
-        <h1>Listado de Alumnos</h1>
-        <a href="/alumnos/new" class="btn btn-primary mb-3">Crear Nuevo Alumno</a>
-        <?php if(session()->getFlashdata('success')):?>
-            <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-        <?php endif;?>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre Completo</th>
-                    <th>DNI</th>
-                    <th>Email</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if($alumnos): ?>
-                <?php foreach($alumnos as $alumno): ?>
-                <tr>
-                    <td><?= $alumno['ID_Alumno']; ?></td>
-                    <td><?= $alumno['Nombre_Completo']; ?></td>
-                    <td><?= $alumno['DNI']; ?></td>
-                    <td><?= $alumno['Email']; ?></td>
-                    <td>
-                        <a href="/alumnos/edit/<?= $alumno['ID_Alumno']; ?>" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="/alumnos/delete/<?= $alumno['ID_Alumno']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este registro?')">Eliminar</a>
-                    </td>
-                </tr>
+
+    <?= $this->extend('templates/layout') ?>
+    <?= $this->section('content') ?>
+
+    <h1>Listado de Alumnos</h1>
+
+    <a href="<?= site_url('alumnos/create') ?>">➕ Nuevo Alumno</a>
+
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>DNI</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($alumnos)): ?>
+                <?php foreach ($alumnos as $t): ?>
+                    <tr>
+                        <td><?= $t['ID_Alumno'] ?></td>
+                        <td><?= $t['Nombre_Completo'] ?></td>
+                        <td><?= $t['DNI'] ?></td>
+                        <td><?= $t['Email'] ?></td>
+                        <td>
+                            <a href="<?= site_url('alumnos/edit/' . $t['ID_Alumno']) ?>">✏️ Editar</a> |
+                            <a href="<?= site_url('alumnos/delete/' . $t['ID_Alumno']) ?>" onclick="return confirm('¿Seguro que quieres eliminar este alumno?')">🗑️ Eliminar</a>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
-                <?php else: ?>
+            <?php else: ?>
                 <tr>
                     <td colspan="5">No hay alumnos registrados.</td>
                 </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
-    </div>
+            <?php endif; ?>
+        </tbody>
+    </table>
+
+    <?= $this->endSection() ?>
 </body>
+
 </html>

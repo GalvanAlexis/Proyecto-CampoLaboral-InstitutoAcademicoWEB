@@ -1,36 +1,30 @@
-<?php
-// Conexión a la base de datos
-$host = "localhost";
-$user = "root";
-$password = "";
-$dbname = "instituto";
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Profesor</title>
+</head>
+<body>
+    <?= $this->extend('templates/layout') ?>
+    <?= $this->section('content') ?>
+    <h1>Editar Profesor</h1>
 
-$conn = new mysqli($host, $user, $password, $dbname);
+    <form method="post" action="<?= site_url('profesores/update/'.$profesor['ID_Profesor']) ?>">
+        <label>Profesor:</label><br>
+        <input type="text" name="Nombre_Completo" value="<?= $profesor['Nombre_Completo'] ?>" required><br><br>
 
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+        <label>DNI:</label><br>
+        <input type="number" name="DNI" value="<?= $profesor['DNI'] ?>" required><br><br>
 
-// Obtener datos del formulario
-$id     = $_POST['profId'] ?? '';
-$nombre = $_POST['nombre'] ?? '';
-$dni    = $_POST['dni'] ?? '';
-$email  = $_POST['email'] ?? '';
+        <label>Email:</label><br>
+        <input type="text" name="email" value="<?= $profesor['Email'] ?>" required><br><br>
 
-if ($id && $nombre && $dni && $email) {
-    $stmt = $conn->prepare("UPDATE profesores SET nombre=?, dni=?, email=? WHERE id=?");
-    $stmt->bind_param("sssi", $nombre, $dni, $email, $id);
+        <button type="submit">Actualizar</button>
+    </form>
 
-    if ($stmt->execute()) {
-        echo "Profesor actualizado correctamente";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
+    <br>
+    <a href="<?= site_url('profesores') ?>">⬅️ Volver al listado</a>
 
-    $stmt->close();
-} else {
-    echo "Faltan datos";
-}
-
-$conn->close();
-?>
+    <?= $this->endSection() ?>
+</body>
+</html>

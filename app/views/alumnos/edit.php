@@ -1,39 +1,30 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Editar Alumno</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h1>Editar Alumno</h1>
-        <a href="/alumnos" class="btn btn-secondary mb-3">Volver</a>
-        <?php if(session()->getFlashdata('errors')):?>
-            <div class="alert alert-danger">
-                <ul>
-                    <?php foreach (session()->getFlashdata('errors') as $error) : ?>
-                        <li><?= $error ?></li>
-                    <?php endforeach ?>
-                </ul>
-            </div>
-        <?php endif;?>
-        <form action="/alumnos/update/<?= $alumno['ID_Alumno'] ?>" method="post">
-            <?= csrf_field() ?>
-            <div class="form-group">
-                <label for="Nombre_Completo">Nombre Completo</label>
-                <input type="text" class="form-control" name="Nombre_Completo" value="<?= old('Nombre_Completo', $alumno['Nombre_Completo']) ?>">
-            </div>
-            <div class="form-group">
-                <label for="DNI">DNI</label>
-                <input type="text" class="form-control" name="DNI" value="<?= old('DNI', $alumno['DNI']) ?>">
-            </div>
-            <div class="form-group">
-                <label for="Email">Email</label>
-                <input type="email" class="form-control" name="Email" value="<?= old('Email', $alumno['Email']) ?>">
-            </div>
-            <button type="submit" class="btn btn-warning">Actualizar</button>
-        </form>
-    </div>
+    <?= $this->extend('templates/layout') ?>
+    <?= $this->section('content') ?>
+    <h1>Editar Alumno</h1>
+
+    <form method="post" action="<?= site_url('alumnos/update/'.$alumno['ID_Alumno']) ?>">
+        <label>Alumno:</label><br>
+        <input type="text" name="Nombre_Completo" value="<?= $alumno['Nombre_Completo'] ?>" required><br><br>
+
+        <label>DNI:</label><br>
+        <input type="number" name="DNI" value="<?= $alumno['DNI'] ?>" required><br><br>
+
+        <label>Email:</label><br>
+        <input type="text" name="email" value="<?= $alumno['Email'] ?>" required><br><br>
+
+        <button type="submit">Actualizar</button>
+    </form>
+
+    <br>
+    <a href="<?= site_url('alumnos') ?>">⬅️ Volver al listado</a>
+
+    <?= $this->endSection() ?>
 </body>
 </html>

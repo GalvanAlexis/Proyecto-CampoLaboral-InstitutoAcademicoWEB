@@ -6,24 +6,20 @@ use CodeIgniter\Model;
 
 class AlumnoModel extends Model
 {
-    // Nombre de la tabla
-    protected $table = 'alumnos';
+    protected $table            = 'alumnos';
+    protected $primaryKey       = 'ID_Alumno';
+    protected $useAutoIncrement = true;
+    protected $returnType       = 'array';
+    protected $useSoftDeletes   = false;
 
-    // Clave primaria de la tabla
-    protected $primaryKey = 'ID_Alumno';
+    protected $allowedFields    = [
+        'Nombre_Completo',
+        'DNI',
+        'Email'
+    ];
 
-    // Campos que se pueden modificar (CORREGIDO)
-    protected $allowedFields = ['Nombre_Completo', 'DNI', 'Email', 'created_at', 'updated_at', 'deleted_at'];
 
-    // Habilita los campos de auditoría (created_at, updated_at)
-    protected $useTimestamps = true;
-
-    // Formato de fecha
-    protected $dateFormat = 'datetime';
-
-    // Habilita la eliminación suave (soft delete)
-    protected $useSoftDeletes = true;
-
-    // Nombre del campo para soft delete
-    protected $deletedField = 'deleted_at';
 }
+
+
+
