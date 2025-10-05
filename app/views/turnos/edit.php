@@ -1,30 +1,51 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Editar Turno</title>
+    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
 </head>
+
 <body>
     <?= $this->extend('templates/layout') ?>
     <?= $this->section('content') ?>
-    <h1>Editar Turno</h1>
 
-    <form method="post" action="<?= site_url('turnos/update/'.$turno['ID_Turno']) ?>">
-        <label>Turno:</label><br>
-        <input type="text" name="Turno" value="<?= $turno['Turno'] ?>" required><br><br>
+    <div class="crud-container">
+        <div class="crud-header">
+            <h1 class="crud-title">Editar Turno</h1>
+        </div>
 
-        <label>ID Profesor:</label><br>
-        <input type="number" name="ID_Profesor" value="<?= $turno['ID_Profesor'] ?>" required><br><br>
+        <div class="form-container">
+            <form method="post" action="<?= site_url('turnos/update/' . $turno['ID_Turno']) ?>" class="crud-form">
+                <div class="form-group">
+                    <label for="turno" class="form-label">Turno:</label>
+                    <input type="text" id="turno" name="Turno" class="form-input" value="<?= esc($turno['Turno']) ?>" required>
+                </div>
 
-        <label>ID Carrera:</label><br>
-        <input type="number" name="ID_Carrera" value="<?= $turno['ID_Carrera'] ?>" required><br><br>
+                <div class="form-group">
+                    <label for="id_profesor" class="form-label">ID Profesor:</label>
+                    <input type="number" id="id_profesor" name="ID_Profesor" class="form-input" value="<?= esc($turno['ID_Profesor']) ?>" required>
+                </div>
 
-        <button type="submit">Actualizar</button>
-    </form>
+                <div class="form-group">
+                    <label for="id_carrera" class="form-label">ID Carrera:</label>
+                    <input type="number" id="id_carrera" name="ID_Carrera" class="form-input" value="<?= esc($turno['ID_Carrera']) ?>" required>
+                </div>
 
-    <br>
-    <a href="<?= site_url('turnos') ?>">⬅️ Volver al listado</a>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        ✅ Actualizar
+                    </button>
+                    <a href="<?= site_url('turnos') ?>" class="btn btn-secondary">
+                        ⬅️ Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <?= $this->endSection() ?>
 </body>
+
 </html>

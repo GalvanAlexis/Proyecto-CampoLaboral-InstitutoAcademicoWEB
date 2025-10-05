@@ -1,27 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Editar Carrera</title>
-</head>
-<body>
-    <?= $this->extend('templates/layout') ?>
-    <?= $this->section('content') ?>
-    <h1>Editar Carrera</h1>
+    <!DOCTYPE html>
+    <html>
 
-    <form method="post" action="<?= site_url('carreras/update/'.$carreras['ID_Carrera']) ?>">
-        <label>Carrera:</label><br>
-        <input type="text" name="Nombre_Carrera" value="<?= $carreras['Nombre_Carrera'] ?>" required><br><br>
+    <head>
+        <meta charset="UTF-8">
+        <title>Editar Carrera</title>
+        <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+    </head>
 
-        <label>ID Categoría:</label><br>
-        <input type="number" name="ID_Categoria" value="<?= $carreras['ID_Categoria'] ?>" required><br><br>
+    <body>
+        <?= $this->extend('templates/layout') ?>
+        <?= $this->section('content') ?>
 
-        <button type="submit">Actualizar</button>
-    </form>
+        <div class="crud-container">
+            <div class="crud-header">
+                <h1 class="crud-title">Editar Carrera</h1>
+            </div>
 
-    <br>
-    <a href="<?= site_url('carreras') ?>">⬅️ Volver al listado</a>
+            <div class="form-container">
+                <form method="post" action="<?= site_url('carreras/update/' . $carreras['ID_Carrera']) ?>" class="crud-form">
+                    <div class="form-group">
+                        <label for="Nombre_Carrera" class="form-label">Carrera:</label>
+                        <input type="text" id="Nombre_Carrera" name="Nombre_Carrera" class="form-input" value="<?= esc($carreras['Nombre_Carrera']) ?>" required>
+                    </div>
 
-    <?= $this->endSection() ?>
-</body>
-</html>
+                    <div class="form-group">
+                        <label for="ID_Categoria" class="form-label">ID Categoría:</label>
+                        <input type="number" id="ID_Categoria" name="ID_Categoria" class="form-input" value="<?= esc($carreras['ID_Categoria']) ?>" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            ✅ Actualizar
+                        </button>
+                        <a href="<?= site_url('carreras') ?>" class="btn btn-secondary">
+                            ⬅️ Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <?= $this->endSection() ?>
+    </body>
+
+    </html>
+    </body>
+
+    </html>

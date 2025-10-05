@@ -3,27 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Nuevo Alumno</title>
+    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
 </head>
 <body>
     <?= $this->extend('templates/layout') ?>
     <?= $this->section('content') ?>
-    <h1>Nuevo Alumno</h1>
 
-    <form method="post" action="<?= site_url('alumnos/store') ?>">
-        <label>Alumno:</label><br>
-        <input type="text" name="Nombre_Completo" required><br><br>
+    <div class="crud-container">
+        <div class="crud-header">
+            <h1 class="crud-title">Nuevo Alumno</h1>
+        </div>
 
-        <label>DNI:</label><br>
-        <input type="number" name="DNI" required><br><br>
+        <div class="form-container">
+            <form method="post" action="<?= site_url('alumnos/store') ?>" class="crud-form">
+                <div class="form-group">
+                    <label for="Nombre_Completo" class="form-label">Alumno:</label>
+                    <input type="text" id="Nombre_Completo" name="Nombre_Completo" class="form-input" required>
+                </div>
 
-        <label>Email:</label><br>
-        <input type="text" name="email" required><br><br>
+                <div class="form-group">
+                    <label for="DNI" class="form-label">DNI:</label>
+                    <input type="number" id="DNI" name="DNI" class="form-input" required>
+                </div>
 
-        <button type="submit">Guardar</button>
-    </form>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="text" id="email" name="email" class="form-input" required>
+                </div>
 
-    <br>
-    <a href="<?= site_url('alumnos') ?>">⬅️ Volver al listado</a>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        💾 Guardar
+                    </button>
+                    <a href="<?= site_url('alumnos') ?>" class="btn btn-secondary">
+                        ⬅️ Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <?= $this->endSection() ?>
 </body>
 </html>

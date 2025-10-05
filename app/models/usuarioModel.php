@@ -15,7 +15,9 @@ class UsuarioModel extends Model
     protected $allowedFields    = [
         'Email',
         'Password',
-        'ID_Rol'
+        'ID_Rol',
+        'fecha_registro',
+        'ultimo_login'
     ];
 
 
