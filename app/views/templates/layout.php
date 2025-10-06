@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
 </head>
+
 <body>
-    <!-- Navbar Superior -->
+    <?php $auth = auth(); ?>
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid px-4">
             <a class="navbar-brand d-flex align-items-center" href="<?= site_url('/') ?>">
@@ -21,40 +25,26 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('alumnos') ?>">
-                            <i class="fas fa-user-graduate me-1"></i>Alumnos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('profesores') ?>">
-                            <i class="fas fa-chalkboard-teacher me-1"></i>Profesores
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('carreras') ?>">
-                            <i class="fas fa-book me-1"></i>Carreras
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('turnos') ?>">
-                            <i class="fas fa-clock me-1"></i>Turnos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('categorias') ?>">
-                            <i class="fas fa-tags me-1"></i>Categorías
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('usuarios') ?>">
-                            <i class="fas fa-users me-1"></i>Usuarios
-                        </a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="<?= site_url('alumnos') ?>">Alumnos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= site_url('profesores') ?>">Profesores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= site_url('carreras') ?>">Carreras</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= site_url('turnos') ?>">Turnos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= site_url('categorias') ?>">Categorías</a></li>
+
+                    <?php if ($auth->isLoggedIn()): ?>
+                        <?php if ($auth->user()->inGroup('admin')): ?>
+                            <li class="nav-item"><a class="nav-link" href="<?= site_url('usuarios') ?>">Usuarios</a></li>
+                        <?php endif; ?>
+                        <li class="nav-item"><a class="nav-link" href="<?= site_url('logout') ?>">Salir</a></li>
+                    <?php else: ?>
+                        <li class="nav-item"><a class="nav-link" href="<?= site_url('login') ?>">Login</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
     </nav>
+
+
 
     <!-- Contenido Principal -->
     <main class="main-content">
@@ -85,4 +75,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
