@@ -4,48 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Listado de Profesores</title>
+    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
 </head>
 
 <body>
-
     <?= $this->extend('templates/layout') ?>
     <?= $this->section('content') ?>
 
-    <h1>Listado de Profesores</h1>
+    <div class="crud-container">
+        <div class="crud-header">
+            <h1 class="crud-title">Listado de Profesores</h1>
+            <a href="<?= site_url('profesores/create') ?>" class="btn btn-primary">
+                <span class="btn-icon">➕</span>
+                Nuevo Profesor
+            </a>
+        </div>
 
-    <a href="<?= site_url('profesores/create') ?>">➕ Nuevo Profesor</a>
-
-    <table border="1" cellpadding="5" cellspacing="0">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>DNI</th>
-                <th>Email</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (!empty($profesores)): ?>
-                <?php foreach ($profesores as $t): ?>
+        <div class="table-container">
+            <table class="crud-table">
+                <thead>
                     <tr>
-                        <td><?= $t['ID_Profesor'] ?></td>
-                        <td><?= $t['Nombre_Completo'] ?></td>
-                        <td><?= $t['DNI'] ?></td>
-                        <td><?= $t['Email'] ?></td>
-                        <td>
-                            <a href="<?= site_url('profesores/edit/' . $t['ID_Profesor']) ?>">✏️ Editar</a> |
-                            <a href="<?= site_url('profesores/delete/' . $t['ID_Profesor']) ?>" onclick="return confirm('¿Seguro que quieres eliminar este profesor?')">🗑️ Eliminar</a>
-                        </td>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>DNI</th>
+                        <th>Email</th>
+                        <th class="actions-column">Acciones</th>
                     </tr>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <tr>
-                    <td colspan="5">No hay profesores registrados.</td>
-                </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
+                </thead>
+                <tbody>
+                    <?php if (!empty($profesores)): ?>
+                        <?php foreach ($profesores as $t): ?>
+                            <tr>
+                                <td><?= esc($t['ID_Profesor']) ?></td>
+                                <td><?= esc($t['Nombre_Completo']) ?></td>
+                                <td><?= esc($t['DNI']) ?></td>
+                                <td><?= esc($t['Email']) ?></td>
+                                <td class="actions-cell">
+                                    <a href="<?= site_url('profesores/edit/' . $t['ID_Profesor']) ?>" class="btn btn-sm btn-edit" title="Editar">
+                                        ✏️ Editar
+                                    </a>
+                                    <a href="<?= site_url('profesores/delete/' . $t['ID_Profesor']) ?>"
+                                        class="btn btn-sm btn-delete"
+                                        onclick="return confirm('¿Seguro que quieres eliminar este profesor?')"
+                                        title="Eliminar">
+                                        🗑️ Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="5" class="empty-state">
+                                <div class="empty-icon">📋</div>
+                                <p>No hay profesores registrados.</p>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <?= $this->endSection() ?>
 </body>
