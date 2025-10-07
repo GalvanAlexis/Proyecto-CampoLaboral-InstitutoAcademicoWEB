@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Gestión</title>
+    <title>Instituto Superior de Educación - Formando Profesionales de Excelencia</title>
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
 </head>
 
@@ -13,143 +13,267 @@
     <?= $this->section('content') ?>
 
     <!-- Hero Section -->
-    <div class="hero-section">
-        <div class="hero-content text-center">
-            <h1 class="hero-title">
-                <i class="fas fa-graduation-cap me-3"></i>
-                Sistema de Gestión Académica
+    <div class="hero-landing">
+        <div class="hero-overlay-landing"></div>
+        <div class="hero-content-landing">
+            <div class="hero-badge">
+                <i class="fas fa-award"></i>
+                <span>Excelencia Académica desde 1995</span>
+            </div>
+            <h1 class="hero-title-landing">
+                Instituto Superior de Educación Profesional
             </h1>
-            <p class="hero-subtitle">
-                Administre de manera eficiente todos los aspectos de su institución educativa
+            <p class="hero-description">
+                Formamos profesionales comprometidos con la excelencia, la innovación y el desarrollo de nuestra comunidad
             </p>
-        </div>
-    </div>
-
-    <!-- Cards Grid -->
-    <div class="modules-grid">
-        <!-- Alumnos Card -->
-        <div class="module-card">
-            <div class="module-icon alumnos-color">
-                <i class="fas fa-user-graduate"></i>
-            </div>
-            <div class="module-content">
-                <h3 class="module-title">Alumnos</h3>
-                <p class="module-description">
-                    Gestione el registro completo de estudiantes, inscripciones y datos académicos
-                </p>
-                <a href="<?= site_url('alumnos') ?>" class="btn-module alumnos-color">
-                    Acceder <i class="fas fa-arrow-right ms-2"></i>
+            <div class="hero-buttons">
+                <a href="#carreras" class="btn-hero btn-hero-primary">
+                    <i class="fas fa-book-open"></i>
+                    Ver Carreras
+                </a>
+                <a href="#about" class="btn-hero btn-hero-secondary">
+                    <i class="fas fa-info-circle"></i>
+                    Conocer Más
                 </a>
             </div>
-        </div>
-
-        <!-- Profesores Card -->
-        <div class="module-card">
-            <div class="module-icon profesores-color">
-                <i class="fas fa-chalkboard-teacher"></i>
-            </div>
-            <div class="module-content">
-                <h3 class="module-title">Profesores</h3>
-                <p class="module-description">
-                    Administre el personal docente, asignaciones y datos profesionales
-                </p>
-                <a href="<?= site_url('profesores') ?>" class="btn-module profesores-color">
-                    Acceder <i class="fas fa-arrow-right ms-2"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Carreras Card -->
-        <div class="module-card">
-            <div class="module-icon carreras-color">
-                <i class="fas fa-book"></i>
-            </div>
-            <div class="module-content">
-                <h3 class="module-title">Carreras</h3>
-                <p class="module-description">
-                    Configure y administre los planes de estudio y programas académicos
-                </p>
-                <a href="<?= site_url('carreras') ?>" class="btn-module carreras-color">
-                    Acceder <i class="fas fa-arrow-right ms-2"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Turnos Card -->
-        <div class="module-card">
-            <div class="module-icon turnos-color">
-                <i class="fas fa-clock"></i>
-            </div>
-            <div class="module-content">
-                <h3 class="module-title">Turnos</h3>
-                <p class="module-description">
-                    Organice los horarios y turnos de clases de la institución
-                </p>
-                <a href="<?= site_url('turnos') ?>" class="btn-module turnos-color">
-                    Acceder <i class="fas fa-arrow-right ms-2"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Categorías Card -->
-        <div class="module-card">
-            <div class="module-icon categorias-color">
-                <i class="fas fa-tags"></i>
-            </div>
-            <div class="module-content">
-                <h3 class="module-title">Categorías</h3>
-                <p class="module-description">
-                    Defina categorías y clasificaciones para organizar la información
-                </p>
-                <a href="<?= site_url('categorias') ?>" class="btn-module categorias-color">
-                    Acceder <i class="fas fa-arrow-right ms-2"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Usuarios Card -->
-        <div class="module-card">
-            <div class="module-icon usuarios-color">
-                <i class="fas fa-users"></i>
-            </div>
-            <div class="module-content">
-                <h3 class="module-title">Usuarios</h3>
-                <p class="module-description">
-                    Gestione usuarios del sistema, permisos y roles de acceso
-                </p>
-                <a href="<?= site_url('usuarios') ?>" class="btn-module usuarios-color">
-                    Acceder <i class="fas fa-arrow-right ms-2"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Info Section -->
-    <div class="info-section mt-5">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="info-card">
-                    <i class="fas fa-shield-alt info-icon"></i>
-                    <h4>Seguro y Confiable</h4>
-                    <p>Sistema protegido con las mejores prácticas de seguridad</p>
+            
+            <div class="hero-stats-landing">
+                <div class="stat-box">
+                    <div class="stat-number-landing">28</div>
+                    <div class="stat-label-landing">Años de Trayectoria</div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="info-card">
-                    <i class="fas fa-tachometer-alt info-icon"></i>
-                    <h4>Rápido y Eficiente</h4>
-                    <p>Acceso veloz a toda la información que necesita</p>
+                <div class="stat-divider-landing"></div>
+                <div class="stat-box">
+                    <div class="stat-number-landing">2,500+</div>
+                    <div class="stat-label-landing">Estudiantes Activos</div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="info-card">
-                    <i class="fas fa-mobile-alt info-icon"></i>
-                    <h4>Diseño Responsivo</h4>
-                    <p>Accesible desde cualquier dispositivo, en cualquier lugar</p>
+                <div class="stat-divider-landing"></div>
+                <div class="stat-box">
+                    <div class="stat-number-landing">15+</div>
+                    <div class="stat-label-landing">Carreras Disponibles</div>
+                </div>
+                <div class="stat-divider-landing"></div>
+                <div class="stat-box">
+                    <div class="stat-number-landing">95%</div>
+                    <div class="stat-label-landing">Inserción Laboral</div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Sobre Nosotros -->
+    <section id="about" class="about-section">
+        <div class="container-landing">
+            <div class="about-content">
+                <div class="about-text">
+                    <span class="section-label">Sobre Nosotros</span>
+                    <h2 class="section-title-landing">Una Institución Comprometida con tu Futuro</h2>
+                    <p class="section-description-landing">
+                        Desde 1995, el Instituto Superior de Educación Profesional se ha consolidado como una de las instituciones educativas de mayor prestigio en la región. Nuestra misión es formar profesionales altamente capacitados, con valores éticos y responsabilidad social.
+                    </p>
+                    <p class="section-description-landing">
+                        Contamos con un cuerpo docente de excelencia, infraestructura moderna y convenios con empresas líderes que garantizan la inserción laboral de nuestros egresados.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Títulos oficiales reconocidos</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Modalidad presencial y online</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Prácticas profesionales garantizadas</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Bolsa de trabajo activa</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-university"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carreras Destacadas -->
+    <section id="carreras" class="carreras-section">
+        <div class="container-landing">
+            <div class="section-header-center">
+                <span class="section-label">Oferta Académica</span>
+                <h2 class="section-title-landing">Nuestras Carreras</h2>
+                <p class="section-description-landing">
+                    Programas académicos diseñados para formar profesionales competitivos en el mercado laboral actual
+                </p>
+            </div>
+
+            <div class="carreras-grid">
+                <div class="carrera-card">
+                    <div class="carrera-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="carrera-title">Tecnicatura en Programación</h3>
+                    <p class="carrera-description">Desarrollo de software, aplicaciones web y móviles. Formación en las tecnologías más demandadas del mercado.</p>
+                    <ul class="carrera-info">
+                        <li><i class="fas fa-clock"></i> Duración: 3 años</li>
+                        <li><i class="fas fa-calendar"></i> Turno: Mañana / Noche</li>
+                    </ul>
+                    <a href="#" class="btn-carrera">Más Información <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="carrera-card">
+                    <div class="carrera-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="carrera-title">Enfermería Profesional</h3>
+                    <p class="carrera-description">Formación integral en salud, cuidados intensivos y atención primaria. Prácticas en hospitales de referencia.</p>
+                    <ul class="carrera-info">
+                        <li><i class="fas fa-clock"></i> Duración: 3 años</li>
+                        <li><i class="fas fa-calendar"></i> Turno: Mañana / Tarde</li>
+                    </ul>
+                    <a href="#" class="btn-carrera">Más Información <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="carrera-card">
+                    <div class="carrera-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="carrera-title">Administración de Empresas</h3>
+                    <p class="carrera-description">Gestión empresarial, finanzas y recursos humanos. Preparación para liderar organizaciones exitosas.</p>
+                    <ul class="carrera-info">
+                        <li><i class="fas fa-clock"></i> Duración: 3 años</li>
+                        <li><i class="fas fa-calendar"></i> Turno: Tarde / Noche</li>
+                    </ul>
+                    <a href="#" class="btn-carrera">Más Información <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="carrera-card">
+                    <div class="carrera-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="carrera-title">Diseño Gráfico Digital</h3>
+                    <p class="carrera-description">Creatividad y tecnología. Formación en diseño visual, publicidad y medios digitales.</p>
+                    <ul class="carrera-info">
+                        <li><i class="fas fa-clock"></i> Duración: 3 años</li>
+                        <li><i class="fas fa-calendar"></i> Turno: Mañana / Tarde</li>
+                    </ul>
+                    <a href="#" class="btn-carrera">Más Información <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="carrera-card">
+                    <div class="carrera-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3 class="carrera-title">Educación Inicial</h3>
+                    <p class="carrera-description">Formación de docentes especializados en primera infancia. Metodologías innovadoras de enseñanza.</p>
+                    <ul class="carrera-info">
+                        <li><i class="fas fa-clock"></i> Duración: 4 años</li>
+                        <li><i class="fas fa-calendar"></i> Turno: Mañana / Tarde</li>
+                    </ul>
+                    <a href="#" class="btn-carrera">Más Información <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="carrera-card">
+                    <div class="carrera-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="carrera-title">Marketing Digital</h3>
+                    <p class="carrera-description">Estrategias digitales, redes sociales y comercio electrónico. Formación práctica en casos reales.</p>
+                    <ul class="carrera-info">
+                        <li><i class="fas fa-clock"></i> Duración: 2.5 años</li>
+                        <li><i class="fas fa-calendar"></i> Turno: Tarde / Noche</li>
+                    </ul>
+                    <a href="#" class="btn-carrera">Más Información <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por Qué Elegirnos -->
+    <section class="why-us-section">
+        <div class="container-landing">
+            <div class="section-header-center">
+                <span class="section-label">Ventajas</span>
+                <h2 class="section-title-landing">¿Por Qué Elegirnos?</h2>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon blue-gradient">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h4 class="benefit-title">Docentes Calificados</h4>
+                    <p class="benefit-text">Profesionales con amplia experiencia en el sector educativo y laboral</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon green-gradient">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h4 class="benefit-title">Infraestructura Moderna</h4>
+                    <p class="benefit-text">Aulas equipadas, laboratorios y biblioteca con recursos actualizados</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon purple-gradient">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4 class="benefit-title">Convenios Empresariales</h4>
+                    <p class="benefit-text">Alianzas con empresas líderes para prácticas y oportunidades laborales</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon orange-gradient">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4 class="benefit-title">Títulos Oficiales</h4>
+                    <p class="benefit-text">Certificaciones reconocidas a nivel nacional e internacional</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon red-gradient">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h4 class="benefit-title">Horarios Flexibles</h4>
+                    <p class="benefit-text">Turnos mañana, tarde y noche adaptados a tus necesidades</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon teal-gradient">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h4 class="benefit-title">Campus Virtual</h4>
+                    <p class="benefit-text">Plataforma online 24/7 con materiales y seguimiento académico</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container-landing">
+            <div class="cta-content">
+                <h2 class="cta-title">¿Listo para Iniciar tu Carrera Profesional?</h2>
+                <p class="cta-description">Únete a nuestra comunidad educativa y comienza a construir tu futuro hoy mismo</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn-cta btn-cta-primary">
+                        <i class="fas fa-edit"></i>
+                        Inscribirse Ahora
+                    </a>
+                    <a href="#" class="btn-cta btn-cta-secondary">
+                        <i class="fas fa-phone"></i>
+                        Solicitar Información
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <?= $this->endSection() ?>
 </body>
