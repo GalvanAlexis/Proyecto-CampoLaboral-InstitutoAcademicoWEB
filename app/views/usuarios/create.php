@@ -3,27 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Nuevo Usuario</title>
+    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
 </head>
 <body>
     <?= $this->extend('templates/layout') ?>
     <?= $this->section('content') ?>
-    <h1>Nuevo Usuario</h1>
 
-    <form method="post" action="<?= site_url('usuarios/store') ?>">
-        <label>Email:</label><br>
-        <input type="text" name="Email" required><br><br>
+    <div class="crud-container">
+        <div class="crud-header">
+            <h1 class="crud-title">Nuevo Usuario</h1>
+        </div>
 
-        <label>Contraseña:</label><br>
-        <input type="text" name="password" required><br><br>
+        <div class="form-container">
+            <form method="post" action="<?= site_url('usuarios/store') ?>" class="crud-form">
+                <div class="form-group">
+                    <label for="Email" class="form-label">Email:</label>
+                    <input type="text" id="Email" name="Email" class="form-input" required>
+                </div>
 
-        <label>ID Rol:</label><br>
-        <input type="number" name="ID_Rol" required><br><br>
+                <div class="form-group">
+                    <label for="password" class="form-label">Contraseña:</label>
+                    <input type="text" id="password" name="password" class="form-input" required>
+                </div>
 
-        <button type="submit">Guardar</button>
-    </form>
+                <div class="form-group">
+                    <label for="ID_Rol" class="form-label">ID Rol:</label>
+                    <input type="number" id="ID_Rol" name="ID_Rol" class="form-input" required>
+                </div>
 
-    <br>
-    <a href="<?= site_url('usuarios') ?>">⬅️ Volver al listado</a>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        💾 Guardar
+                    </button>
+                    <a href="<?= site_url('usuarios') ?>" class="btn btn-secondary">
+                        ⬅️ Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <?= $this->endSection() ?>
 </body>
 </html>

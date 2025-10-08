@@ -1,26 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Nueva Carrera</title>
-</head>
-<body>
-    <?= $this->extend('templates/layout') ?>
-    <?= $this->section('content') ?>
-    <h1>Nueva Carrera</h1>
+    <!DOCTYPE html>
+    <html>
 
-    <form method="post" action="<?= site_url('carreras/store') ?>">
-        <label>Carrera:</label><br>
-        <input type="text" name="Nombre_Carrera" required><br><br>
+    <head>
+        <meta charset="UTF-8">
+        <title>Nueva Carrera</title>
+        <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+    </head>
 
-        <label>ID Categoría:</label><br>
-        <input type="number" name="ID_Categoria" required><br><br>
+    <body>
+        <?= $this->extend('templates/layout') ?>
+        <?= $this->section('content') ?>
 
-        <button type="submit">Guardar</button>
-    </form>
+        <div class="crud-container">
+            <div class="crud-header">
+                <h1 class="crud-title">Nueva Carrera</h1>
+            </div>
 
-    <br>
-    <a href="<?= site_url('carreras') ?>">⬅️ Volver al listado</a>
-    <?= $this->endSection() ?>
-</body>
-</html>
+            <div class="form-container">
+                <form method="post" action="<?= site_url('carreras/store') ?>" class="crud-form">
+                    <div class="form-group">
+                        <label for="Nombre_Carrera" class="form-label">Carrera:</label>
+                        <input type="text" id="Nombre_Carrera" name="Nombre_Carrera" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ID_Categoria" class="form-label">ID Categoría:</label>
+                        <input type="number" id="ID_Categoria" name="ID_Categoria" class="form-input" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            💾 Guardar
+                        </button>
+                        <a href="<?= site_url('carreras') ?>" class="btn btn-secondary">
+                            ⬅️ Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <?= $this->endSection() ?>
+    </body>
+
+    </html>
+    </body>
+
+    </html>
