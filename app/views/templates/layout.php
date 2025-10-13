@@ -25,6 +25,50 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+<<<<<<< HEAD
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= site_url('alumnos') ?>">
+                            <i class="fas fa-user-graduate me-1"></i>Alumnos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= site_url('profesores') ?>">
+                            <i class="fas fa-chalkboard-teacher me-1"></i>Profesores
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= site_url('carreras') ?>">
+                            <i class="fas fa-book me-1"></i>Carreras
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= site_url('turnos') ?>">
+                            <i class="fas fa-clock me-1"></i>Turnos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= site_url('categorias') ?>">
+                            <i class="fas fa-tags me-1"></i>Categorías
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= site_url('usuarios') ?>">
+                            <i class="fas fa-users me-1"></i>Usuarios
+                        </a>
+                    </li>
+                    <?php if (auth()->loggedIn()): ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= site_url('logout') ?>">
+                                <i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión
+                            </a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= site_url('login') ?>">
+                                <i class="fas fa-sign-in-alt me-1"></i>Login
+                            </a>
+                        </li>
+=======
                     <li class="nav-item"><a class="nav-link" href="<?= site_url('alumnos') ?>">Alumnos</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= site_url('profesores') ?>">Profesores</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= site_url('carreras') ?>">Carreras</a></li>
@@ -38,6 +82,7 @@
                         <li class="nav-item"><a class="nav-link" href="<?= site_url('logout') ?>">Salir</a></li>
                     <?php else: ?>
                         <li class="nav-item"><a class="nav-link" href="<?= site_url('login') ?>">Login</a></li>
+>>>>>>> fac8b67554a14ff1fb799d323181c0e914832622
                     <?php endif; ?>
                 </ul>
             </div>

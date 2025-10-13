@@ -23,7 +23,11 @@ class AuthGroups extends ShieldAuthGroups
      * --------------------------------------------------------------------
      * The group that a newly registered user is added to.
      */
+<<<<<<< HEAD
+    public string $defaultGroup = 'alumno';
+=======
     public string $defaultGroup = '';
+>>>>>>> fac8b67554a14ff1fb799d323181c0e914832622
 
     /**
      * --------------------------------------------------------------------
@@ -41,6 +45,22 @@ class AuthGroups extends ShieldAuthGroups
      * @see https://codeigniter4.github.io/shield/quick_start_guide/using_authorization/#change-available-groups for more info
      */
     public array $groups = [
+<<<<<<< HEAD
+        'admin'    => [
+            'title'       => 'Administrador',
+            'description' => 'Acceso total al sistema.',
+        ],
+        'alumno'   => [
+            'title'       => 'Alumno',
+            'description' => 'Puede ver carreras e inscribirse.',
+        ],
+        'profesor' => [
+            'title'       => 'Profesor',
+            'description' => 'Puede ver inscripciones y carreras.',
+        ],
+    ];
+
+=======
         'admin' => [
             'title'       => 'Administrador',
             'description' => 'Acceso completo al sistema, puede crear usuarios y administrar todos los datos.',
@@ -56,6 +76,7 @@ class AuthGroups extends ShieldAuthGroups
     ];
 
 
+>>>>>>> fac8b67554a14ff1fb799d323181c0e914832622
     /**
      * --------------------------------------------------------------------
      * Permissions
@@ -65,6 +86,17 @@ class AuthGroups extends ShieldAuthGroups
      * If a permission is not listed here it cannot be used.
      */
     public array $permissions = [
+<<<<<<< HEAD
+        // Admin
+        'manage-users'      => 'Crear, editar y eliminar usuarios',
+        'manage-cruds'      => 'Acceso total a los cruds',
+        // Alumno
+        'view-carreras'     => 'Ver carreras',
+        'inscribirse'       => 'Inscribirse en carreras',
+        // Profesor
+        'ver-inscripciones' => 'Ver inscripciones',
+        'ver-carreras'      => 'Ver carreras',
+=======
         // General
         'crud.access',       // acceso general al panel
         'users.manage',      // crear, editar y borrar usuarios
@@ -74,6 +106,7 @@ class AuthGroups extends ShieldAuthGroups
         'carreras.view',
         'categorias.view',
         'turnos.view',
+>>>>>>> fac8b67554a14ff1fb799d323181c0e914832622
     ];
 
     /**
@@ -85,6 +118,23 @@ class AuthGroups extends ShieldAuthGroups
      * This defines group-level permissions.
      */
     public array $matrix = [
+<<<<<<< HEAD
+        'admin'    => [
+            'manage-users',
+            'manage-cruds',
+            'view-carreras',
+            'inscribirse',
+            'ver-inscripciones',
+            'ver-carreras',
+        ],
+        'alumno'   => [
+            'view-carreras',
+            'inscribirse',
+        ],
+        'profesor' => [
+            'ver-inscripciones',
+            'ver-carreras',
+=======
         'admin' => [
             'crud.access',
             'users.manage',
@@ -107,6 +157,7 @@ class AuthGroups extends ShieldAuthGroups
             'crud.access',
             'carreras.view',
             'alumnos.enroll',
+>>>>>>> fac8b67554a14ff1fb799d323181c0e914832622
         ],
     ];
 }
