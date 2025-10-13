@@ -23,7 +23,7 @@ class AuthGroups extends ShieldAuthGroups
      * --------------------------------------------------------------------
      * The group that a newly registered user is added to.
      */
-    public string $defaultGroup = '';
+    public string $defaultGroup = 'user';
 
     /**
      * --------------------------------------------------------------------
@@ -41,20 +41,27 @@ class AuthGroups extends ShieldAuthGroups
      * @see https://codeigniter4.github.io/shield/quick_start_guide/using_authorization/#change-available-groups for more info
      */
     public array $groups = [
+        'superadmin' => [
+            'title'       => 'Super Admin',
+            'description' => 'Complete control of the site.',
+        ],
         'admin' => [
-            'title'       => 'Administrador',
-            'description' => 'Acceso completo al sistema, puede crear usuarios y administrar todos los datos.',
+            'title'       => 'Admin',
+            'description' => 'Day to day administrators of the site.',
         ],
-        'profesor' => [
-            'title'       => 'Profesor',
-            'description' => 'Puede ver listados de alumnos, profesores, carreras, categorías y turnos.',
+        'developer' => [
+            'title'       => 'Developer',
+            'description' => 'Site programmers.',
         ],
-        'alumno' => [
-            'title'       => 'Alumno',
-            'description' => 'Puede ver carreras e inscribirse en una.',
+        'user' => [
+            'title'       => 'User',
+            'description' => 'General users of the site. Often customers.',
+        ],
+        'beta' => [
+            'title'       => 'Beta User',
+            'description' => 'Has access to beta-level features.',
         ],
     ];
-
 
     /**
      * --------------------------------------------------------------------
@@ -65,15 +72,13 @@ class AuthGroups extends ShieldAuthGroups
      * If a permission is not listed here it cannot be used.
      */
     public array $permissions = [
-        // General
-        'crud.access',       // acceso general al panel
-        'users.manage',      // crear, editar y borrar usuarios
-        'profesores.view',
-        'alumnos.view',
-        'alumnos.enroll',    // inscribirse a una carrera
-        'carreras.view',
-        'categorias.view',
-        'turnos.view',
+        'admin.access'        => 'Can access the sites admin area',
+        'admin.settings'      => 'Can access the main site settings',
+        'users.manage-admins' => 'Can manage other admins',
+        'users.create'        => 'Can create new non-admin users',
+        'users.edit'          => 'Can edit existing non-admin users',
+        'users.delete'        => 'Can delete existing non-admin users',
+        'beta.access'         => 'Can access beta-level features',
     ];
 
     /**
@@ -85,28 +90,28 @@ class AuthGroups extends ShieldAuthGroups
      * This defines group-level permissions.
      */
     public array $matrix = [
+        'superadmin' => [
+            'admin.*',
+            'users.*',
+            'beta.*',
+        ],
         'admin' => [
-            'crud.access',
-            'users.manage',
-            'profesores.view',
-            'alumnos.view',
-            'alumnos.enroll',
-            'carreras.view',
-            'categorias.view',
-            'turnos.view',
+            'admin.access',
+            'users.create',
+            'users.edit',
+            'users.delete',
+            'beta.access',
         ],
-        'profesor' => [
-            'crud.access',
-            'profesores.view',
-            'alumnos.view',
-            'carreras.view',
-            'categorias.view',
-            'turnos.view',
+        'developer' => [
+            'admin.access',
+            'admin.settings',
+            'users.create',
+            'users.edit',
+            'beta.access',
         ],
-        'alumno' => [
-            'crud.access',
-            'carreras.view',
-            'alumnos.enroll',
+        'user' => [],
+        'beta' => [
+            'beta.access',
         ],
     ];
 }

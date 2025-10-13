@@ -48,16 +48,16 @@ $routes->post('profesores/update/(:num)', 'Profesores::update/$1');
 $routes->get('profesores/delete/(:num)', 'Profesores::delete/$1');
 
 //RUTAS PARA EL CRUD DE Usuarios
-$routes->get('/usuarios', 'Usuarios::index');
-$routes->get('/usuarios/create', 'Usuarios::create');
-$routes->post('/usuarios/store', 'Usuarios::store');
-$routes->get('/usuarios/edit/(:num)', 'Usuarios::edit/$1');
-$routes->post('/usuarios/update/(:num)', 'Usuarios::update/$1');
-$routes->get('/usuarios/delete/(:num)', 'Usuarios::delete/$1');
+//$routes->get('/usuarios', 'Usuarios::index');
+//$routes->get('/usuarios/create', 'Usuarios::create');
+//$routes->post('/usuarios/store', 'Usuarios::store');
+//$routes->get('/usuarios/edit/(:num)', 'Usuarios::edit/$1');
+//$routes->post('/usuarios/update/(:num)', 'Usuarios::update/$1');
+//$routes->get('/usuarios/delete/(:num)', 'Usuarios::delete/$1');
 
 service('auth')->routes($routes);
 
 // Ejemplo de grupo protegido por login:
-$routes->group('admin', ['filter' => 'session'], function ($routes) {
-    $routes->get('/', 'Admin\Dashboard::index');
-});
+//$routes->group('admin', ['filter' => 'session'], function ($routes) {
+//    $routes->get('/', 'Admin\Dashboard::index');
+//});
