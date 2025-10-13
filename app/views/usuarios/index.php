@@ -25,27 +25,36 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Nombre de usuario</th>
                         <th>Email</th>
-                        <th>ID Rol</th>
-                        <th>Fecha de Registro</th>
-                        <th>Última Sesión</th>
+                        <th>Rol</th>
+                        <th>Fecha de registro</th>
+                        <th>Última sesión</th>
                         <th class="actions-column">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if (!empty($usuarios)): ?>
-                        <?php foreach ($usuarios as $t): ?>
+                        <?php foreach ($usuarios as $u): ?>
                             <tr>
-                                <td><?= $t['ID_Usuario'] ?></td>
-                                <td><?= $t['Email'] ?></td>
-                                <td><?= $t['ID_Rol'] ?></td>
-                                <td><?= $t['fecha_registro'] ?></td>
-                                <td><?= $t['ultimo_login'] ?></td>
+                                <td><?= esc($u->id) ?></td>
+                                <td><?= esc($u->username) ?></td>
+                                <td><?= esc($u->email) ?></td>
+                                <td>
+                                    <?php
+                                        $groups = $u->getGroups();
+                                        echo !empty($groups) ? implode(', ', $groups) : 'Sin rol';
+                                    ?>
+                                </td>
+                                <td><?= esc(date('d/m/Y H:i', strtotime($u->created_at))) ?></td>
+                                <td>
+                                    <?= $u->last_active ? esc(date('d/m/Y H:i', strtotime($u->last_active))) : 'Nunca' ?>
+                                </td>
                                 <td class="actions-cell">
-                                    <a href="<?= site_url('usuarios/edit/' . $t['ID_Usuario']) ?>" class="btn btn-sm btn-edit" title="Editar">
+                                    <a href="<?= site_url('usuarios/edit/' . $u->id) ?>" class="btn btn-sm btn-edit" title="Editar">
                                         ✏️ Editar
                                     </a>
-                                    <a href="<?= site_url('usuarios/delete/' . $t['ID_Usuario']) ?>"
+                                    <a href="<?= site_url('usuarios/delete/' . $u->id) ?>"
                                         class="btn btn-sm btn-delete"
                                         onclick="return confirm('¿Seguro que quieres eliminar este usuario?')"
                                         title="Eliminar">
@@ -56,7 +65,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="5" class="empty-state">
+                            <td colspan="7" class="empty-state">
                                 <div class="empty-icon">📋</div>
                                 <p>No hay usuarios registrados.</p>
                             </td>
