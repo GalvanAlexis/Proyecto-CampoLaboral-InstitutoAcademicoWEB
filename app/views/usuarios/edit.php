@@ -15,20 +15,20 @@
         </div>
 
         <div class="form-container">
-            <form method="post" action="<?= site_url('usuarios/update/' .$usuario['ID_Usuario']) ?>" class="crud-form">
+            <form method="post" action="<?= site_url('usuarios/update/' .$usuario->id) ?>" class="crud-form">
                 <div class="form-group">
                     <label for="Email" class="form-label">Email:</label>
-                    <input type="text" id="Email" name="Email" class="form-input" value="<?= esc($usuario['Email']) ?>" required>
+                    <input type="text" id="Email" name="Email" class="form-input" value="<?= esc($usuario->email) ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password" class="form-label">Contraseña:</label>
-                    <input type="text" id="password" name="password" class="form-input" value="<?= esc($usuario['Password']) ?>" required>
+                    <input type="text" id="password" name="password" class="form-input" value="<?= esc($usuario->password) ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="ID_Rol" class="form-label">ID Rol:</label>
-                    <input type="number" id="ID_Rol" name="ID_Rol" class="form-input" value="<?= esc($usuario['ID_Rol']) ?>" required>
+                    <input type="number" id="ID_Rol" name="ID_Rol" class="form-input" value="<?= esc($usuario->role) ?>" required>
                 </div>
 
                 <div class="form-actions">
