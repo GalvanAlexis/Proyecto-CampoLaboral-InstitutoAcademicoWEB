@@ -51,6 +51,19 @@
                             <i class="fas fa-users me-1"></i>Usuarios
                         </a>
                     </li>
+                    <?php if (auth()->loggedIn()): ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= site_url('logout') ?>">
+                                <i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión
+                            </a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= site_url('login') ?>">
+                                <i class="fas fa-sign-in-alt me-1"></i>Login
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

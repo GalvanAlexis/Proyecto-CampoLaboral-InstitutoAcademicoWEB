@@ -7,6 +7,9 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
+service('auth')->routes($routes);
+
+$routes->group('', ['filter' => 'group:admin'], function ($routes) {
 //RUTAS PARA EL CRUD DE TURNOS
 $routes->get('/turnos', 'Turnos::index');
 $routes->get('/turnos/create', 'Turnos::create');
@@ -54,3 +57,4 @@ $routes->post('/usuarios/store', 'Usuarios::store');
 $routes->get('/usuarios/edit/(:num)', 'Usuarios::edit/$1');
 $routes->post('/usuarios/update/(:num)', 'Usuarios::update/$1');
 $routes->get('/usuarios/delete/(:num)', 'Usuarios::delete/$1');
+});

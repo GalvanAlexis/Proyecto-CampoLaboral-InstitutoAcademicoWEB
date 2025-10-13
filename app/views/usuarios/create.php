@@ -2,46 +2,33 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Nuevo Usuario</title>
+    <title>Registrar Usuario</title>
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
 </head>
 <body>
     <?= $this->extend('templates/layout') ?>
     <?= $this->section('content') ?>
 
-    <div class="crud-container">
-        <div class="crud-header">
-            <h1 class="crud-title">Nuevo Usuario</h1>
-        </div>
+    <h2>Registrar Usuario</h2>
+    <form method="post" action="/usuarios/store">
+        <label>Nombre de usuario:</label>
+        <input type="text" name="username" required><br>
 
-        <div class="form-container">
-            <form method="post" action="<?= site_url('usuarios/store') ?>" class="crud-form">
-                <div class="form-group">
-                    <label for="Email" class="form-label">Email:</label>
-                    <input type="text" id="Email" name="Email" class="form-input" required>
-                </div>
+        <label>Email:</label>
+        <input type="email" name="email" required><br>
 
-                <div class="form-group">
-                    <label for="password" class="form-label">Contraseña:</label>
-                    <input type="text" id="password" name="password" class="form-input" required>
-                </div>
+        <label>Contraseña:</label>
+        <input type="password" name="password" required><br>
 
-                <div class="form-group">
-                    <label for="ID_Rol" class="form-label">ID Rol:</label>
-                    <input type="number" id="ID_Rol" name="ID_Rol" class="form-input" required>
-                </div>
+        <label>Rol:</label>
+        <select name="group" required>
+            <?php foreach ($groups as $key => $group): ?>
+                <option value="<?= esc($key) ?>"><?= esc($group['title']) ?></option>
+            <?php endforeach; ?>
+        </select><br>
 
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">
-                        💾 Guardar
-                    </button>
-                    <a href="<?= site_url('usuarios') ?>" class="btn btn-secondary">
-                        ⬅️ Cancelar
-                    </a>
-                </div>
-            </form>
-        </div>
-    </div>
+        <button type="submit">Registrar</button>
+    </form>
 
     <?= $this->endSection() ?>
 </body>
