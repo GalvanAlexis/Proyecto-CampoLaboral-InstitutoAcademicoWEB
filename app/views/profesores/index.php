@@ -1,55 +1,71 @@
-<?php
-// Conexión
-$host = "localhost";
-$user = "root";
-$password = "";
-$dbname = "instituto";
-
-$conn = new mysqli($host, $user, $password, $dbname);
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
-$result = $conn->query("SELECT * FROM profesores");
-?>
 <!DOCTYPE html>
-<html lang="es">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <title>Profesores</title>
+    <meta charset="UTF-8">
+    <title>Listado de Profesores</title>
+    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
 </head>
+
 <body>
-  <h1>Profesores</h1>
-  <a href="crear_profesor_form.php">➕ Agregar profesor</a>
-  <table border="1" cellpadding="5">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>DNI</th>
-        <th>Email</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php while($row = $result->fetch_assoc()): ?>
-      <tr>
-        <td><?php echo $row['id']; ?></td>
-        <td><?php echo $row['nombre']; ?></td>
-        <td><?php echo $row['dni']; ?></td>
-        <td><?php echo $row['email']; ?></td>
-        <td>
-          <!-- editar.php recibirá el ID por GET -->
-          <a href="editar_profesor_form.php?id=<?php echo $row['id']; ?>">Editar</a> | 
-          <form action="delete_profesor.php" method="post" style="display:inline;">
-            <input type="hidden" name="profId" value="<?php echo $row['id']; ?>">
-            <button type="submit">Eliminar</button>
-          </form>
-        </td>
-      </tr>
-      <?php endwhile; ?>
-    </tbody>
-  </table>
+    <?= $this->extend('templates/layout') ?>
+    <?= $this->section('content') ?>
+
+    <div class="crud-container">
+        <div class="crud-header">
+            <h1 class="crud-title">Listado de Profesores</h1>
+            <a href="<?= site_url('profesores/create') ?>" class="btn btn-primary">
+                <span class="btn-icon">➕</span>
+                Nuevo Profesor
+            </a>
+        </div>
+
+        <div class="table-container">
+            <table class="crud-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>DNI</th>
+                        <th>Email</th>
+                        <th class="actions-column">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (!empty($profesores)): ?>
+                        <?php foreach ($profesores as $t): ?>
+                            <tr>
+                                <td><?= esc($t['ID_Profesor']) ?></td>
+                                <td><?= esc($t['Nombre_Completo']) ?></td>
+                                <td><?= esc($t['DNI']) ?></td>
+                                <td><?= esc($t['Email']) ?></td>
+                                <td class="actions-cell">
+                                    <a href="<?= site_url('profesores/edit/' . $t['ID_Profesor']) ?>" class="btn btn-sm btn-edit" title="Editar">
+                                        ✏️ Editar
+                                    </a>
+                                    <a href="<?= site_url('profesores/delete/' . $t['ID_Profesor']) ?>"
+                                        class="btn btn-sm btn-delete"
+                                        onclick="return confirm('¿Seguro que quieres eliminar este profesor?')"
+                                        title="Eliminar">
+                                        🗑️ Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="5" class="empty-state">
+                                <div class="empty-icon">📋</div>
+                                <p>No hay profesores registrados.</p>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <?= $this->endSection() ?>
 </body>
+
 </html>
-<?php $conn->close(); ?>

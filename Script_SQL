@@ -64,14 +64,23 @@ CREATE TABLE Turnos (
         ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
--- ========================
--- TABLA: Usuarios
--- ========================
-CREATE TABLE Usuarios (
-    Email VARCHAR(100) PRIMARY KEY,
+-- Crear tabla de Roles
+CREATE TABLE roles (
+    ID_Rol INT AUTO_INCREMENT PRIMARY KEY,
+    Rol VARCHAR(50) NOT NULL
+);
+
+-- Crear tabla de Usuarios
+CREATE TABLE usuarios (
+    ID_Usuario INT AUTO_INCREMENT PRIMARY KEY,
+    Email VARCHAR(100) NOT NULL UNIQUE,
     Password VARCHAR(255) NOT NULL,
-    Rol ENUM('alumno','profesor','superadmin') NOT NULL
-) ENGINE=InnoDB;
+    ID_Rol INT NOT NULL,
+    CONSTRAINT fk_usuarios_roles
+        FOREIGN KEY (ID_Rol) REFERENCES roles(ID_Rol)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
 
 -- ========================
 -- TABLA: Inscripciones

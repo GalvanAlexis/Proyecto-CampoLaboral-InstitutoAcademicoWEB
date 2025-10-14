@@ -1,36 +1,51 @@
-<?php
-// Conexión a la base de datos
-$host = "localhost";
-$user = "root";
-$password = "";
-$dbname = "instituto";
+<!DOCTYPE html>
+<html>
 
-$conn = new mysqli($host, $user, $password, $dbname);
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Profesor</title>
+    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>">
+</head>
 
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+<body>
+    <?= $this->extend('templates/layout') ?>
+    <?= $this->section('content') ?>
 
-// Obtener datos del formulario
-$id     = $_POST['profId'] ?? '';
-$nombre = $_POST['nombre'] ?? '';
-$dni    = $_POST['dni'] ?? '';
-$email  = $_POST['email'] ?? '';
+    <div class="crud-container">
+        <div class="crud-header">
+            <h1 class="crud-title">Nuevo Profesor</h1>
+        </div>
 
-if ($id && $nombre && $dni && $email) {
-    $stmt = $conn->prepare("INSERT INTO profesores (id, nombre, dni, email) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("isss", $id, $nombre, $dni, $email);
+        <div class="form-container">
+            <form method="post" action="<?= site_url('profesores/store') ?>" class="crud-form">
+                <div class="form-group">
+                    <label for="Nombre_Completo" class="form-label">Profesor:</label>
+                    <input type="text" id="Nombre_Completo" name="Nombre_Completo" class="form-input" required>
+                </div>
 
-    if ($stmt->execute()) {
-        echo "Profesor agregado correctamente";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
+                <div class="form-group">
+                    <label for="DNI" class="form-label">DNI:</label>
+                    <input type="number" id="DNI" name="DNI" class="form-input" required>
+                </div>
 
-    $stmt->close();
-} else {
-    echo "Faltan datos";
-}
+                <div class="form-group">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="text" id="email" name="email" class="form-input" required>
+                </div>
 
-$conn->close();
-?>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        💾 Guardar
+                    </button>
+                    <a href="<?= site_url('profesores') ?>" class="btn btn-secondary">
+                        ⬅️ Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <?= $this->endSection() ?>
+</body>
+
+</html>
