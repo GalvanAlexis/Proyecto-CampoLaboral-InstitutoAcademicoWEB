@@ -1,0 +1,593 @@
+ERROR - 2025-09-29 17:35:14 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), '', 3306, '', 0)
+#1 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\app\controllers\turnos.php(13): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Turnos->index()
+#8 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Turnos))
+#9 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\app\controllers\turnos.php(13): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Turnos->index()
+#7 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Turnos))
+#8 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2025-09-29 17:35:14 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: NO)
+[Method: GET, Route: turnos]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `turnos`', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\controllers\turnos.php(13): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Turnos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Turnos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+ERROR - 2025-09-29 17:36:04 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), '', 3306, '', 0)
+#1 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\app\controllers\alumno.php(22): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Alumno->index()
+#8 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Alumno))
+#9 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\app\controllers\alumno.php(22): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Alumno->index()
+#7 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Alumno))
+#8 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2025-09-29 17:36:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: NO)
+[Method: GET, Route: alumnos]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\controllers\alumno.php(22): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Alumno->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Alumno))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+ERROR - 2025-09-29 17:36:19 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), '', 3306, '', 0)
+#1 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\app\controllers\turnos.php(13): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Turnos->index()
+#8 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Turnos))
+#9 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\app\controllers\turnos.php(13): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Turnos->index()
+#7 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Turnos))
+#8 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2025-09-29 17:36:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: NO)
+[Method: GET, Route: turnos]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `turnos`', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\controllers\turnos.php(13): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Turnos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Turnos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+ERROR - 2025-09-29 17:57:01 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), '', 3306, '', 0)
+#1 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\app\controllers\turnos.php(13): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Turnos->index()
+#8 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Turnos))
+#9 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\app\controllers\turnos.php(13): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Turnos->index()
+#7 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Turnos))
+#8 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2025-09-29 17:57:01 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: NO)
+[Method: GET, Route: turnos]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `turnos`', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\controllers\turnos.php(13): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Turnos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Turnos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+ERROR - 2025-09-29 18:03:46 --> mysqli_sql_exception: Unknown column 'alumnos.deleted_at' in 'where clause' in C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\app\controllers\alumno.php(22): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Alumno->index()
+#8 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Alumno))
+#9 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+CRITICAL - 2025-09-29 18:03:46 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'alumnos.deleted_at' in 'where clause'
+[Method: GET, Route: alumnos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\controllers\alumno.php(22): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Alumno->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Alumno))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 18:03:46 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'alumnos.deleted_at' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\controllers\alumno.php(22): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Alumno->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Alumno))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 18:03:46 --> [Caused by] mysqli_sql_exception: Unknown column 'alumnos.deleted_at' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\controllers\alumno.php(22): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Alumno->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Alumno))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 18:23:31 --> CodeIgniter\Database\Exceptions\DataException: There is no data to insert.
+[Method: POST, Route: carreras/store]
+in SYSTEMPATH\BaseModel.php on line 824.
+ 1 SYSTEMPATH\BaseModel.php(824): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('insert')
+ 2 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([], true)
+ 3 APPPATH\controllers\carreras.php(27): CodeIgniter\Model->insert([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Carreras->store()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Carreras))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 18:27:06 --> CodeIgniter\Database\Exceptions\DataException: There is no data to insert.
+[Method: POST, Route: carreras/store]
+in SYSTEMPATH\BaseModel.php on line 824.
+ 1 SYSTEMPATH\BaseModel.php(824): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('insert')
+ 2 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([], true)
+ 3 APPPATH\controllers\carreras.php(27): CodeIgniter\Model->insert([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Carreras->store()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Carreras))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 18:30:58 --> CodeIgniter\Database\Exceptions\DataException: There is no data to insert.
+[Method: POST, Route: carreras/store]
+in SYSTEMPATH\BaseModel.php on line 824.
+ 1 SYSTEMPATH\BaseModel.php(824): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('insert')
+ 2 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([], true)
+ 3 APPPATH\controllers\carreras.php(27): CodeIgniter\Model->insert([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Carreras->store()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Carreras))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 18:33:11 --> ErrorException: Undefined variable $turno
+[Method: GET, Route: carreras/edit/1]
+in APPPATH\views\carreras\edit.php on line 12.
+ 1 APPPATH\views\carreras\edit.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $turno', 'C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\carreras\\edit.php', 12)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\carreras\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('carreras/edit', [], true)
+ 5 APPPATH\controllers\carreras.php(40): view('carreras/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Carreras->edit('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Carreras))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 18:35:05 --> ErrorException: Undefined variable $turno
+[Method: GET, Route: carreras/edit/4]
+in APPPATH\views\carreras\edit.php on line 12.
+ 1 APPPATH\views\carreras\edit.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $turno', 'C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\carreras\\edit.php', 12)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\carreras\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('carreras/edit', [], true)
+ 5 APPPATH\controllers\carreras.php(40): view('carreras/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Carreras->edit('4')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Carreras))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 18:38:30 --> ErrorException: Undefined variable $carrera
+[Method: GET, Route: carreras/edit/4]
+in APPPATH\views\carreras\edit.php on line 12.
+ 1 APPPATH\views\carreras\edit.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $carrera', 'C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\carreras\\edit.php', 12)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\carreras\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('carreras/edit', [], true)
+ 5 APPPATH\controllers\carreras.php(40): view('carreras/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Carreras->edit('4')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Carreras))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 18:38:33 --> ErrorException: Undefined variable $carrera
+[Method: GET, Route: carreras/edit/4]
+in APPPATH\views\carreras\edit.php on line 12.
+ 1 APPPATH\views\carreras\edit.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $carrera', 'C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\carreras\\edit.php', 12)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\carreras\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('carreras/edit', [], true)
+ 5 APPPATH\controllers\carreras.php(40): view('carreras/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Carreras->edit('4')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Carreras))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 18:38:40 --> ErrorException: Undefined variable $carrera
+[Method: GET, Route: carreras/edit/4]
+in APPPATH\views\carreras\edit.php on line 14.
+ 1 APPPATH\views\carreras\edit.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $carrera', 'C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\carreras\\edit.php', 14)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\carreras\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('carreras/edit', [], true)
+ 5 APPPATH\controllers\carreras.php(40): view('carreras/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Carreras->edit('4')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Carreras))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 18:39:06 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: carreras/update/4]
+in SYSTEMPATH\BaseModel.php on line 1008.
+ 1 SYSTEMPATH\BaseModel.php(1008): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(860): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\controllers\carreras.php(47): CodeIgniter\Model->update('4', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Carreras->update('4')
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Carreras))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+ERROR - 2025-09-29 20:53:28 --> mysqli_sql_exception: Unknown column 'alumnos.deleted_at' in 'where clause' in C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\app\controllers\alumno.php(22): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Alumno->index()
+#8 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Alumno))
+#9 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\Proyecto-CampoLaboral-InstitutoAcademicoWEB\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+CRITICAL - 2025-09-29 20:53:28 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'alumnos.deleted_at' in 'where clause'
+[Method: GET, Route: alumnos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\controllers\alumno.php(22): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Alumno->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Alumno))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 20:53:28 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'alumnos.deleted_at' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\controllers\alumno.php(22): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Alumno->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Alumno))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 20:53:28 --> [Caused by] mysqli_sql_exception: Unknown column 'alumnos.deleted_at' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `alumnos`
+WHERE `alumnos`.`deleted_at` IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\controllers\alumno.php(22): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Alumno->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Alumno))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 21:20:45 --> ErrorException: Undefined variable $turno
+[Method: GET, Route: profesores/edit/1]
+in APPPATH\views\profesores\edit.php on line 12.
+ 1 APPPATH\views\profesores\edit.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $turno', 'C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\profesores\\edit.php', 12)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\profesores\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('profesores/edit', [], true)
+ 5 APPPATH\controllers\profesores.php(41): view('profesores/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profesores->edit('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profesores))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 21:21:10 --> ErrorException: Undefined array key "email"
+[Method: GET, Route: profesores/edit/1]
+in APPPATH\views\profesores\edit.php on line 20.
+ 1 APPPATH\views\profesores\edit.php(20): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\profesores\\edit.php', 20)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\profesores\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('profesores/edit', [], true)
+ 5 APPPATH\controllers\profesores.php(41): view('profesores/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profesores->edit('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profesores))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 22:03:53 --> ErrorException: Undefined variable $profesor
+[Method: GET, Route: alumnos/edit/1]
+in APPPATH\views\alumnos\edit.php on line 12.
+ 1 APPPATH\views\alumnos\edit.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $profesor', 'C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\alumnos\\edit.php', 12)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\alumnos\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('alumnos/edit', [], true)
+ 5 APPPATH\controllers\alumnos.php(41): view('alumnos/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Alumnos->edit('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Alumnos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 22:37:04 --> ErrorException: Undefined variable $turno
+[Method: GET, Route: usuarios/edit/1]
+in APPPATH\views\usuarios\edit.php on line 12.
+ 1 APPPATH\views\usuarios\edit.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $turno', 'C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\usuarios\\edit.php', 12)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\usuarios\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('usuarios/edit', [], true)
+ 5 APPPATH\controllers\usuarios.php(41): view('usuarios/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Usuarios->edit('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 22:37:26 --> ErrorException: Undefined variable $usario
+[Method: GET, Route: usuarios/edit/1]
+in APPPATH\views\usuarios\edit.php on line 20.
+ 1 APPPATH\views\usuarios\edit.php(20): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usario', 'C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\usuarios\\edit.php', 20)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\usuarios\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('usuarios/edit', [], true)
+ 5 APPPATH\controllers\usuarios.php(41): view('usuarios/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Usuarios->edit('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 22:37:59 --> ErrorException: Undefined variable $usuarios
+[Method: GET, Route: usuarios/edit/1]
+in APPPATH\views\usuarios\edit.php on line 12.
+ 1 APPPATH\views\usuarios\edit.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuarios', 'C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\usuarios\\edit.php', 12)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\usuarios\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('usuarios/edit', [], true)
+ 5 APPPATH\controllers\usuarios.php(41): view('usuarios/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Usuarios->edit('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
+CRITICAL - 2025-09-29 22:38:43 --> ErrorException: Undefined variable $usario
+[Method: GET, Route: usuarios/edit/1]
+in APPPATH\views\usuarios\edit.php on line 20.
+ 1 APPPATH\views\usuarios\edit.php(20): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usario', 'C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\usuarios\\edit.php', 20)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\app\\views\\usuarios\\edit.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('usuarios/edit', [], true)
+ 5 APPPATH\controllers\usuarios.php(41): view('usuarios/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Usuarios->edit('1')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\Proyecto-CampoLaboral-InstitutoAcademicoWEB\\public\\index.php')
