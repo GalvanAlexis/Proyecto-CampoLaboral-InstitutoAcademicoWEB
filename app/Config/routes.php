@@ -57,9 +57,7 @@ $routes->post('/usuarios/store', 'Usuarios::store');
 $routes->get('/usuarios/edit/(:num)', 'Usuarios::edit/$1');
 $routes->post('/usuarios/update/(:num)', 'Usuarios::update/$1');
 $routes->get('/usuarios/delete/(:num)', 'Usuarios::delete/$1');
-<<<<<<< HEAD
 });
-=======
 
 service('auth')->routes($routes);
 
@@ -67,4 +65,3 @@ service('auth')->routes($routes);
 $routes->group('admin', ['filter' => 'session'], function ($routes) {
     $routes->get('/', 'Admin\Dashboard::index');
 });
->>>>>>> fac8b67554a14ff1fb799d323181c0e914832622

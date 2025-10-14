@@ -25,7 +25,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-<<<<<<< HEAD
                     <li class="nav-item">
                         <a class="nav-link" href="<?= site_url('alumnos') ?>">
                             <i class="fas fa-user-graduate me-1"></i>Alumnos
@@ -68,21 +67,6 @@
                                 <i class="fas fa-sign-in-alt me-1"></i>Login
                             </a>
                         </li>
-=======
-                    <li class="nav-item"><a class="nav-link" href="<?= site_url('alumnos') ?>">Alumnos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= site_url('profesores') ?>">Profesores</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= site_url('carreras') ?>">Carreras</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= site_url('turnos') ?>">Turnos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= site_url('categorias') ?>">Categorías</a></li>
-
-                    <?php if ($auth->isLoggedIn()): ?>
-                        <?php if ($auth->user()->inGroup('admin')): ?>
-                            <li class="nav-item"><a class="nav-link" href="<?= site_url('usuarios') ?>">Usuarios</a></li>
-                        <?php endif; ?>
-                        <li class="nav-item"><a class="nav-link" href="<?= site_url('logout') ?>">Salir</a></li>
-                    <?php else: ?>
-                        <li class="nav-item"><a class="nav-link" href="<?= site_url('login') ?>">Login</a></li>
->>>>>>> fac8b67554a14ff1fb799d323181c0e914832622
                     <?php endif; ?>
                 </ul>
             </div>
