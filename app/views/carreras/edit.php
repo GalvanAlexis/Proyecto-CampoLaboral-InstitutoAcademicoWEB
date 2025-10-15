@@ -24,8 +24,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="ID_Categoria" class="form-label">ID Categoría:</label>
-                        <input type="number" id="ID_Categoria" name="ID_Categoria" class="form-input" value="<?= esc($carreras['ID_Categoria']) ?>" required>
+                        <label for="ID_Categoria" class="form-label">Categoría:</label>
+                        <select id="ID_Categoria" name="ID_Categoria" class="form-input" required>
+                            <option value="">-- Selecciona una categoría --</option>
+                            <?php if (!empty($categorias)): ?>
+                                <?php foreach ($categorias as $cat): ?>
+                                    <option value="<?= esc($cat['ID_Categoria']) ?>" <?= $cat['ID_Categoria'] == $carreras['ID_Categoria'] ? 'selected' : '' ?>><?= esc($cat['Categoria']) ?></option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </select>
                     </div>
 
                     <div class="form-actions">
