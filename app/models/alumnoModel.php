@@ -15,7 +15,8 @@ class AlumnoModel extends Model
     protected $allowedFields    = [
         'Nombre_Completo',
         'DNI',
-        'Email'
+        'Email',
+        'user_id'
     ];
 
 
