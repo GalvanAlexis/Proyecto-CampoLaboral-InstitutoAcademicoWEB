@@ -104,3 +104,20 @@ CREATE TABLE Inscripciones (
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 ) ENGINE=InnoDB;
+
+
+/** script SQL completo para agregar una columna user_id a tu tabla alumnos 
+y establecer la relación con la tabla auth_identities como clave foránea**/
+-- Usar la base de datos
+USE instituto;
+
+-- 1. Agregar la columna user_id a la tabla alumnos
+ALTER TABLE alumnos
+ADD COLUMN user_id INT(11) UNSIGNED NULL;
+-- 2. Crear la relación con auth_identities
+ALTER TABLE alumnos
+ADD CONSTRAINT fk_alumnos_user
+FOREIGN KEY (user_id)
+REFERENCES auth_identities(id)
+ON DELETE SET NULL
+ON UPDATE CASCADE;

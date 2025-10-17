@@ -25,48 +25,61 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('alumnos') ?>">
-                            <i class="fas fa-user-graduate me-1"></i>Alumnos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('profesores') ?>">
-                            <i class="fas fa-chalkboard-teacher me-1"></i>Profesores
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('carreras') ?>">
-                            <i class="fas fa-book me-1"></i>Carreras
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('turnos') ?>">
-                            <i class="fas fa-clock me-1"></i>Turnos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('categorias') ?>">
-                            <i class="fas fa-tags me-1"></i>Categorías
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('usuarios') ?>">
-                            <i class="fas fa-users me-1"></i>Usuarios
-                        </a>
-                    </li>
-                    <?php if (auth()->loggedIn()): ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= site_url('logout') ?>">
-                                <i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión
+                    <?php
+                        $user = auth()->user();
+                        $isAdmin = auth()->loggedIn() && $user && method_exists($user, 'inGroup') && $user->inGroup('admin');
+                    ?>
+
+                    <?php if ($isAdmin): ?>
+                        <!-- Admin: menú con dropdowns organizados -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarGestion" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-users-cog me-1"></i>Gestión Personas
                             </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarGestion">
+                                <li><a class="dropdown-item" href="<?= site_url('alumnos') ?>"><i class="fas fa-user-graduate me-2"></i>Alumnos</a></li>
+                                <li><a class="dropdown-item" href="<?= site_url('profesores') ?>"><i class="fas fa-chalkboard-teacher me-2"></i>Profesores</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="<?= site_url('usuarios') ?>"><i class="fas fa-users me-2"></i>Usuarios</a></li>
+                            </ul>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarAcademico" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-graduation-cap me-1"></i>Académico
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarAcademico">
+                                <li><a class="dropdown-item" href="<?= site_url('carreras') ?>"><i class="fas fa-book me-2"></i>Carreras</a></li>
+                                <li><a class="dropdown-item" href="<?= site_url('categorias') ?>"><i class="fas fa-tags me-2"></i>Categorías</a></li>
+                                <li><a class="dropdown-item" href="<?= site_url('turnos') ?>"><i class="fas fa-clock me-2"></i>Turnos</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="<?= site_url('inscripciones') ?>"><i class="fas fa-clipboard-list me-2"></i>Inscripciones</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="<?= site_url('logout') ?>"><i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión</a></li>
+
+                    <?php elseif (auth()->loggedIn()): ?>
+                        <!-- Usuario autenticado no-admin: si es alumno mostrar enlaces apropiados -->
+                        <?php if ($user && method_exists($user, 'inGroup') && $user->inGroup('alumno')): ?>
+                            <li class="nav-item"><a class="nav-link" href="<?= site_url('carreras') ?>"><i class="fas fa-book me-1"></i>Carreras</a></li>
+                            <?php if (! session()->get('ID_Alumno')): ?>
+                                <li class="nav-item"><a class="nav-link" href="<?= site_url('alumnos/completarPerfil') ?>"><i class="fas fa-user-edit me-1"></i>Completar perfil</a></li>
+                            <?php else: ?>
+                                <li class="nav-item"><a class="nav-link" href="<?= site_url('alumnos/editarPerfil') ?>"><i class="fas fa-id-card me-1"></i>Datos personales</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= site_url('alumnos/inscribirse') ?>"><i class="fas fa-clipboard-list me-1"></i>Inscribirse</a></li>
+                            <?php endif; ?>
+                            <li class="nav-item"><a class="nav-link" href="<?= site_url('logout') ?>"><i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión</a></li>
+                        <?php else: ?>
+                            <li class="nav-item"><a class="nav-link" href="<?= site_url('carreras') ?>"><i class="fas fa-book me-1"></i>Carreras</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<?= site_url('turnos') ?>"><i class="fas fa-clock me-1"></i>Turnos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<?= site_url('logout') ?>"><i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión</a></li>
+                        <?php endif; ?>
+
                     <?php else: ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= site_url('login') ?>">
-                                <i class="fas fa-sign-in-alt me-1"></i>Login
-                            </a>
-                        </li>
+                        <!-- Visitante: enlaces a secciones de la landing -->
+                        <li class="nav-item"><a class="nav-link" href="<?= site_url('/') ?>#about"><i class="fas fa-info-circle me-1"></i>Sobre</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= site_url('/') ?>#carreras"><i class="fas fa-book me-1"></i>Carreras</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= site_url('/') ?>#cta"><i class="fas fa-edit me-1"></i>Inscribirse</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= site_url('login') ?>"><i class="fas fa-sign-in-alt me-1"></i>Login</a></li>
                     <?php endif; ?>
                 </ul>
             </div>
@@ -78,6 +91,13 @@
     <!-- Contenido Principal -->
     <main class="main-content">
         <div class="container-fluid px-4 py-4">
+            <?php if (session()->getFlashdata('message')): ?>
+                <div class="alert alert-success"><?= session()->getFlashdata('message') ?></div>
+            <?php endif; ?>
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+            <?php endif; ?>
+
             <?= $this->renderSection('content') ?>
         </div>
     </main>

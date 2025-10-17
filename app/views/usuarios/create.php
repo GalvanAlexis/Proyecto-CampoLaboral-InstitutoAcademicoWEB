@@ -10,7 +10,8 @@
     <?= $this->section('content') ?>
 
     <h2>Registrar Usuario</h2>
-    <form method="post" action="/usuarios/store">
+    <form method="post" action="<?= site_url('usuarios/store') ?>">
+        <?= csrf_field() ?>
         <label>Nombre de usuario:</label>
         <input type="text" name="username" required><br>
 

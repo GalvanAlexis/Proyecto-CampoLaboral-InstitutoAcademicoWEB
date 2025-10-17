@@ -3,21 +3,32 @@
 namespace App\Controllers;
 
 use App\Models\CarreraModel;
+use App\Models\CategoriaModel;
 use CodeIgniter\Controller;
 
 class Carreras extends Controller
 {
     public function index()
     {
-        $model = new CarreraModel();
-        $data['carreras'] = $model->findAll();
+    $db = \Config\Database::connect();
+
+        // Obtener carreras junto con el nombre de la categoría
+        $builder = $db->table('carreras as c');
+        $builder->select('c.ID_Carrera, c.Nombre_Carrera, c.ID_Categoria, cat.Categoria AS Nombre_Categoria');
+        $builder->join('categorias as cat', 'cat.ID_Categoria = c.ID_Categoria', 'left');
+        $query = $builder->get();
+        $data['carreras'] = $query->getResultArray();
 
         return view('carreras/index', $data);
     }
 
     public function create()
     {
-        return view('carreras/create');
+        // Pasar lista de categorías para el select
+        $categoriaModel = new CategoriaModel();
+        $data['categorias'] = $categoriaModel->findAll();
+
+        return view('carreras/create', $data);
     }
 
     public function store()
@@ -36,6 +47,10 @@ class Carreras extends Controller
     {
         $model = new CarreraModel();
         $data['carreras'] = $model->find($id);
+
+        // Lista de categorías para mostrar nombre en select
+        $categoriaModel = new CategoriaModel();
+        $data['categorias'] = $categoriaModel->findAll();
 
         return view('carreras/edit', $data);
     }

@@ -24,13 +24,27 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_profesor" class="form-label">ID Profesor:</label>
-                    <input type="number" id="id_profesor" name="ID_Profesor" class="form-input" required>
+                    <label for="id_profesor" class="form-label">Profesor:</label>
+                    <select id="id_profesor" name="ID_Profesor" class="form-input" required>
+                        <option value="">-- Selecciona un profesor --</option>
+                        <?php if (!empty($profesores)): ?>
+                            <?php foreach ($profesores as $p): ?>
+                                <option value="<?= esc($p['ID_Profesor']) ?>"><?= esc($p['Nombre_Completo']) ?></option>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="id_carrera" class="form-label">ID Carrera:</label>
-                    <input type="number" id="id_carrera" name="ID_Carrera" class="form-input" required>
+                    <label for="id_carrera" class="form-label">Carrera:</label>
+                    <select id="id_carrera" name="ID_Carrera" class="form-input" required>
+                        <option value="">-- Selecciona una carrera --</option>
+                        <?php if (!empty($carreras)): ?>
+                            <?php foreach ($carreras as $c): ?>
+                                <option value="<?= esc($c['ID_Carrera']) ?>"><?= esc($c['Nombre_Carrera']) ?></option>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </select>
                 </div>
 
                 <div class="form-actions">

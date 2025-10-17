@@ -26,6 +26,12 @@ $routes->get('alumnos/edit/(:num)', 'Alumnos::edit/$1');
 $routes->post('alumnos/update/(:num)', 'Alumnos::update/$1');
 $routes->get('alumnos/delete/(:num)', 'Alumnos::delete/$1');
 
+// Rutas para visualización y gestión de Inscripciones (sin create/store - solo alumnos pueden inscribirse)
+$routes->get('/inscripciones', 'Inscripciones::index');
+$routes->get('/inscripciones/edit/(:num)/(:num)/(:num)', 'Inscripciones::edit/$1/$2/$3');
+$routes->post('/inscripciones/update/(:num)/(:num)/(:num)', 'Inscripciones::update/$1/$2/$3');
+$routes->get('/inscripciones/delete/(:num)/(:num)/(:num)', 'Inscripciones::delete/$1/$2/$3');
+
 // Rutas para el CRUD de Categorías
 $routes->get('/categorias', 'Categorias::index');
 $routes->get('categorias/create', 'Categorias::create');
@@ -59,9 +65,12 @@ $routes->post('/usuarios/update/(:num)', 'Usuarios::update/$1');
 $routes->get('/usuarios/delete/(:num)', 'Usuarios::delete/$1');
 });
 
-service('auth')->routes($routes);
-
-// Ejemplo de grupo protegido por login:
-$routes->group('admin', ['filter' => 'session'], function ($routes) {
-    $routes->get('/', 'Admin\Dashboard::index');
+// Rutas para alumnos (solo grupo 'alumno')
+$routes->group('', ['filter' => 'group:alumno'], function($routes){
+	$routes->get('/alumnos/inscribirse', 'Alumnos::inscribirse');
+	$routes->post('/alumnos/inscribirse', 'Alumnos::inscribirse');
+	$routes->get('/alumnos/completarPerfil', 'Alumnos::completarPerfil');
+	$routes->post('/alumnos/completarPerfil', 'Alumnos::completarPerfil');
+	$routes->get('/alumnos/editarPerfil', 'Alumnos::editarPerfil');
+	$routes->post('/alumnos/editarPerfil', 'Alumnos::editarPerfil');
 });

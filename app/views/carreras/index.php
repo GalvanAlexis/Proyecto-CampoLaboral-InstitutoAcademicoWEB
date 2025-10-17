@@ -26,7 +26,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Carrera</th>
-                            <th>ID Categoría</th>
+                            <th>Categoría</th>
                             <th class="actions-column">Acciones</th>
                         </tr>
                     </thead>
@@ -36,7 +36,7 @@
                                 <tr>
                                     <td><?= $t['ID_Carrera'] ?></td>
                                     <td><?= $t['Nombre_Carrera'] ?></td>
-                                    <td><?= $t['ID_Categoria'] ?></td>
+                                    <td><?= isset($t['Nombre_Categoria']) ? esc($t['Nombre_Categoria']) : esc($t['ID_Categoria']) ?></td>
                                     <td class="actions-cell">
                                         <a href="<?= site_url('carreras/edit/' . $t['ID_Carrera']) ?>" class="btn btn-sm btn-edit" title="Editar">
                                             ✏️ Editar
