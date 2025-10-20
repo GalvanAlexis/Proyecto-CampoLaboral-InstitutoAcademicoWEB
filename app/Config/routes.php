@@ -9,6 +9,12 @@ $routes->get('/', 'Home::index');
 
 service('auth')->routes($routes);
 
+// Rutas personalizadas para recuperación de contraseña (sobrescriben las de Shield)
+$routes->get('forgot-password', '\App\Controllers\PasswordResetController::forgotPassword', ['as' => 'forgot-password']);
+$routes->post('forgot-password', '\App\Controllers\PasswordResetController::sendResetLink');
+$routes->get('reset-password', '\App\Controllers\PasswordResetController::resetPassword', ['as' => 'reset-password']);
+$routes->post('reset-password', '\App\Controllers\PasswordResetController::updatePassword');
+
 $routes->group('', ['filter' => 'group:admin'], function ($routes) {
 //RUTAS PARA EL CRUD DE TURNOS
 $routes->get('/turnos', 'Turnos::index');
@@ -73,4 +79,12 @@ $routes->group('', ['filter' => 'group:alumno'], function($routes){
 	$routes->post('/alumnos/completarPerfil', 'Alumnos::completarPerfil');
 	$routes->get('/alumnos/editarPerfil', 'Alumnos::editarPerfil');
 	$routes->post('/alumnos/editarPerfil', 'Alumnos::editarPerfil');
+});
+
+// Rutas para profesores (solo grupo 'profesor')
+$routes->group('', ['filter' => 'group:profesor'], function($routes){
+	$routes->get('/profesores/completarPerfil', 'Profesores::completarPerfil');
+	$routes->post('/profesores/completarPerfil', 'Profesores::completarPerfil');
+	$routes->get('/profesores/editarPerfil', 'Profesores::editarPerfil');
+	$routes->post('/profesores/editarPerfil', 'Profesores::editarPerfil');
 });
