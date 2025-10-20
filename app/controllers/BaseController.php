@@ -63,7 +63,7 @@ abstract class BaseController extends Controller
                 if ($userId) {
                     $this->session->set('user_id', $userId);
 
-                    // Mapear auth()->id() al id de auth_identities (FK en alumnos.user_id)
+                    // Mapear auth()->id() al id de auth_identities (FK en alumnos/profesores.user_id)
                     $db = \Config\Database::connect();
                     $identityRow = $db->table('auth_identities')->where('user_id', $userId)->get()->getRow();
                     
@@ -74,6 +74,12 @@ abstract class BaseController extends Controller
                         $alumnoRow = $db->table('alumnos')->where('user_id', $identityId)->get()->getRowArray();
                         if ($alumnoRow && isset($alumnoRow['ID_Alumno'])) {
                             $this->session->set('ID_Alumno', (int) $alumnoRow['ID_Alumno']);
+                        }
+                        
+                        // Buscar profesor con este identity_id
+                        $profesorRow = $db->table('profesores')->where('user_id', $identityId)->get()->getRowArray();
+                        if ($profesorRow && isset($profesorRow['ID_Profesor'])) {
+                            $this->session->set('ID_Profesor', (int) $profesorRow['ID_Profesor']);
                         }
                     }
                 }
