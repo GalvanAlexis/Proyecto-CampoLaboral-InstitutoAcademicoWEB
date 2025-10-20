@@ -41,7 +41,7 @@ abstract class BaseController extends Controller
      * Be sure to declare properties for any property fetch you initialized.
      * The creation of dynamic property is deprecated in PHP 8.2.
      */
-    // protected $session;
+    protected $session;
 
     /**
      * @return void
@@ -54,5 +54,33 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = service('session');
+        $this->session = service('session');
+
+        // Si el usuario está autenticado, guardar user_id y mapear a ID_Alumno si existe
+        try {
+            if (function_exists('auth') && auth()->loggedIn()) {
+                $userId = auth()->id();
+                if ($userId) {
+                    $this->session->set('user_id', $userId);
+
+                    // Mapear auth()->id() al id de auth_identities (FK en alumnos.user_id)
+                    $db = \Config\Database::connect();
+                    $identityRow = $db->table('auth_identities')->where('user_id', $userId)->get()->getRow();
+                    
+                    if ($identityRow && isset($identityRow->id)) {
+                        $identityId = $identityRow->id;
+                        
+                        // Buscar alumno con este identity_id
+                        $alumnoRow = $db->table('alumnos')->where('user_id', $identityId)->get()->getRowArray();
+                        if ($alumnoRow && isset($alumnoRow['ID_Alumno'])) {
+                            $this->session->set('ID_Alumno', (int) $alumnoRow['ID_Alumno']);
+                        }
+                    }
+                }
+            }
+        } catch (\Throwable $e) {
+            // No bloquear la app; loguear para depuración
+            log_message('error', 'BaseController initController: ' . $e->getMessage());
+        }
     }
 }

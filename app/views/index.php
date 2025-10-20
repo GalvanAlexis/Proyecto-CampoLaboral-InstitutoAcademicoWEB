@@ -256,7 +256,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section id="cta" class="cta-section">
         <div class="container-landing">
             <div class="cta-content">
                 <h2 class="cta-title">¿Listo para Iniciar tu Carrera Profesional?</h2>

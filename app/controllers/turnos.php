@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\TurnoModel;
+use App\Models\ProfesorModel;
+use App\Models\CarreraModel;
 use CodeIgniter\Controller;
 
 class Turnos extends Controller
@@ -10,14 +12,25 @@ class Turnos extends Controller
     public function index()
     {
         $model = new TurnoModel();
-        $data['turnos'] = $model->findAll();
+        // Usar método del modelo que trae relaciones
+        if (method_exists($model, 'getTurnosConRelaciones')) {
+            $data['turnos'] = $model->getTurnosConRelaciones();
+        } else {
+            $data['turnos'] = $model->findAll();
+        }
 
         return view('turnos/index', $data);
     }
 
     public function create()
     {
-        return view('turnos/create');
+        $profesorModel = new ProfesorModel();
+        $carreraModel = new CarreraModel();
+
+        $data['profesores'] = $profesorModel->findAll();
+        $data['carreras'] = $carreraModel->findAll();
+
+        return view('turnos/create', $data);
     }
 
     public function store()
@@ -37,6 +50,11 @@ class Turnos extends Controller
     {
         $model = new TurnoModel();
         $data['turno'] = $model->find($id);
+        $profesorModel = new ProfesorModel();
+        $carreraModel = new CarreraModel();
+
+        $data['profesores'] = $profesorModel->findAll();
+        $data['carreras'] = $carreraModel->findAll();
 
         return view('turnos/edit', $data);
     }

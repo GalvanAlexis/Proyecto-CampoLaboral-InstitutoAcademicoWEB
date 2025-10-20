@@ -23,22 +23,22 @@
         <div class="table-container">
             <table class="crud-table">
                 <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Turno</th>
-                        <th>ID Profesor</th>
-                        <th>ID Carrera</th>
-                        <th class="actions-column">Acciones</th>
-                    </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>Turno</th>
+                            <th>Profesor</th>
+                            <th>Carrera</th>
+                            <th class="actions-column">Acciones</th>
+                        </tr>
                 </thead>
                 <tbody>
                     <?php if (!empty($turnos)): ?>
                         <?php foreach ($turnos as $t): ?>
-                            <tr>
-                                <td><?= esc($t['ID_Turno']) ?></td>
-                                <td><?= esc($t['Turno']) ?></td>
-                                <td><?= esc($t['ID_Profesor']) ?></td>
-                                <td><?= esc($t['ID_Carrera']) ?></td>
+                                <tr>
+                                    <td><?= esc($t['ID_Turno']) ?></td>
+                                    <td><?= esc($t['Turno']) ?></td>
+                                    <td><?= isset($t['Nombre_Completo']) ? esc($t['Nombre_Completo']) : esc($t['ID_Profesor']) ?></td>
+                                    <td><?= isset($t['Nombre_Carrera']) ? esc($t['Nombre_Carrera']) : esc($t['ID_Carrera']) ?></td>
                                 <td class="actions-cell">
                                     <a href="<?= site_url('turnos/edit/' . $t['ID_Turno']) ?>" class="btn btn-sm btn-edit" title="Editar">
                                         ✏️ Editar
