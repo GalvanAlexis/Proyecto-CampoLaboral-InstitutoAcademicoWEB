@@ -58,19 +58,33 @@
                         <li class="nav-item"><a class="nav-link" href="<?= site_url('logout') ?>"><i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión</a></li>
 
                     <?php elseif (auth()->loggedIn()): ?>
-                        <!-- Usuario autenticado no-admin: si es alumno mostrar enlaces apropiados -->
-                        <?php if ($user && method_exists($user, 'inGroup') && $user->inGroup('alumno')): ?>
-                            <?php if (! session()->get('ID_Alumno')): ?>
-                                <li class="nav-item"><a class="nav-link" href="<?= site_url('alumnos/completarPerfil') ?>"><i class="fas fa-user-edit me-1"></i>Completar perfil</a></li>
+                        <!-- Usuario autenticado no-admin -->
+                        <?php if ($user && method_exists($user, 'inGroup')): ?>
+                            
+                            <?php if ($user->inGroup('alumno')): ?>
+                                <!-- Navbar para Alumnos -->
+                                <?php if (! session()->get('ID_Alumno')): ?>
+                                    <li class="nav-item"><a class="nav-link" href="<?= site_url('alumnos/completarPerfil') ?>"><i class="fas fa-user-edit me-1"></i>Completar perfil</a></li>
+                                <?php else: ?>
+                                    <li class="nav-item"><a class="nav-link" href="<?= site_url('alumnos/editarPerfil') ?>"><i class="fas fa-id-card me-1"></i>Datos personales</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?= site_url('alumnos/inscribirse') ?>"><i class="fas fa-clipboard-list me-1"></i>Inscribirse</a></li>
+                                <?php endif; ?>
+                                <li class="nav-item"><a class="nav-link" href="<?= site_url('logout') ?>"><i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión</a></li>
+                            
+                            <?php elseif ($user->inGroup('profesor')): ?>
+                                <!-- Navbar para Profesores -->
+                                <?php if (! session()->get('ID_Profesor')): ?>
+                                    <li class="nav-item"><a class="nav-link" href="<?= site_url('profesores/completarPerfil') ?>"><i class="fas fa-user-edit me-1"></i>Completar perfil</a></li>
+                                <?php else: ?>
+                                    <li class="nav-item"><a class="nav-link" href="<?= site_url('profesores/editarPerfil') ?>"><i class="fas fa-id-card me-1"></i>Datos personales</a></li>
+                                <?php endif; ?>
+                                <li class="nav-item"><a class="nav-link" href="<?= site_url('logout') ?>"><i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión</a></li>
+                            
                             <?php else: ?>
-                                <li class="nav-item"><a class="nav-link" href="<?= site_url('alumnos/editarPerfil') ?>"><i class="fas fa-id-card me-1"></i>Datos personales</a></li>
-                                <li class="nav-item"><a class="nav-link" href="<?= site_url('alumnos/inscribirse') ?>"><i class="fas fa-clipboard-list me-1"></i>Inscribirse</a></li>
+                                <!-- Usuario sin rol específico -->
+                                <li class="nav-item"><a class="nav-link" href="<?= site_url('logout') ?>"><i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión</a></li>
                             <?php endif; ?>
-                            <li class="nav-item"><a class="nav-link" href="<?= site_url('logout') ?>"><i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión</a></li>
-                        <?php else: ?>
-                            <li class="nav-item"><a class="nav-link" href="<?= site_url('carreras') ?>"><i class="fas fa-book me-1"></i>Carreras</a></li>
-                            <li class="nav-item"><a class="nav-link" href="<?= site_url('turnos') ?>"><i class="fas fa-clock me-1"></i>Turnos</a></li>
-                            <li class="nav-item"><a class="nav-link" href="<?= site_url('logout') ?>"><i class="fas fa-sign-out-alt me-1"></i>Cerrar sesión</a></li>
+                        
                         <?php endif; ?>
 
                     <?php else: ?>

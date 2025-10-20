@@ -104,3 +104,37 @@ FOREIGN KEY (user_id)
 REFERENCES auth_identities(id)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
+
+
+-- ========================
+-- TABLA: auth_identities_reset
+-- ========================
+-- Tabla para almacenar tokens de recuperación de contraseña
+-- Los tokens expiran después de 1 hora
+CREATE TABLE auth_identities_reset (
+    id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    created_at DATETIME NULL,
+    INDEX idx_email (email),
+    INDEX idx_token (token)
+) ENGINE=InnoDB;
+
+-- ========================
+-- MODIFICAR TABLA: profesores
+-- ========================
+-- Agregar columna user_id y establecer relación con auth_identities
+-- Usar la base de datos
+USE instituto;
+
+-- 1. Agregar la columna user_id a la tabla profesores
+ALTER TABLE profesores
+ADD COLUMN user_id INT(11) UNSIGNED NULL;
+
+-- 2. Crear la relación con auth_identities
+ALTER TABLE profesores
+ADD CONSTRAINT fk_profesores_user
+FOREIGN KEY (user_id)
+REFERENCES auth_identities(id)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
