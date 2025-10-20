@@ -20,7 +20,12 @@
             <form method="post" action="<?= site_url('turnos/update/' . $turno['ID_Turno']) ?>" class="crud-form">
                 <div class="form-group">
                     <label for="turno" class="form-label">Turno:</label>
-                    <input type="text" id="turno" name="Turno" class="form-input" value="<?= esc($turno['Turno']) ?>" required>
+                    <select id="turno" name="Turno" class="form-input" required>
+                        <option value="">-- Selecciona un turno --</option>
+                        <option value="Mañana" <?= $turno['Turno'] == 'Mañana' ? 'selected' : '' ?>>Mañana</option>
+                        <option value="Tarde" <?= $turno['Turno'] == 'Tarde' ? 'selected' : '' ?>>Tarde</option>
+                        <option value="Noche" <?= $turno['Turno'] == 'Noche' ? 'selected' : '' ?>>Noche</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

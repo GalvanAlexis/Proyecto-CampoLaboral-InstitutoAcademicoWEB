@@ -60,7 +60,6 @@
                     <?php elseif (auth()->loggedIn()): ?>
                         <!-- Usuario autenticado no-admin: si es alumno mostrar enlaces apropiados -->
                         <?php if ($user && method_exists($user, 'inGroup') && $user->inGroup('alumno')): ?>
-                            <li class="nav-item"><a class="nav-link" href="<?= site_url('carreras') ?>"><i class="fas fa-book me-1"></i>Carreras</a></li>
                             <?php if (! session()->get('ID_Alumno')): ?>
                                 <li class="nav-item"><a class="nav-link" href="<?= site_url('alumnos/completarPerfil') ?>"><i class="fas fa-user-edit me-1"></i>Completar perfil</a></li>
                             <?php else: ?>

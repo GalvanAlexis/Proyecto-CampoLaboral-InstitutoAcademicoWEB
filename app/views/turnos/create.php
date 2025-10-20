@@ -20,7 +20,12 @@
             <form method="post" action="<?= site_url('turnos/store') ?>" class="crud-form">
                 <div class="form-group">
                     <label for="turno" class="form-label">Turno:</label>
-                    <input type="text" id="turno" name="Turno" class="form-input" required>
+                    <select id="turno" name="Turno" class="form-input" required>
+                        <option value="">-- Selecciona un turno --</option>
+                        <option value="Mañana">Mañana</option>
+                        <option value="Tarde">Tarde</option>
+                        <option value="Noche">Noche</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
