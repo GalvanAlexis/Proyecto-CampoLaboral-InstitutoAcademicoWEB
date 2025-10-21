@@ -22,44 +22,160 @@ class Alumnos extends Controller
 
     public function store()
     {
-        $model = new AlumnoModel();
-
-        $model->insert([
-            'Nombre_Completo' => $this->request->getPost('Nombre_Completo'),
-            'DNI' => $this->request->getPost('DNI'),
-            'Email'  => $this->request->getPost('email')
+        // Validación de datos
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'Nombre_Completo' => 'required|min_length[3]|max_length[255]|alpha_space',
+            'DNI' => 'required|numeric|min_length[7]|max_length[8]|is_unique[alumnos.DNI]',
+            'email' => 'required|valid_email|max_length[255]|is_unique[alumnos.Email]'
+        ], [
+            'Nombre_Completo' => [
+                'required' => 'El nombre completo es obligatorio',
+                'min_length' => 'El nombre debe tener al menos 3 caracteres',
+                'alpha_space' => 'El nombre solo puede contener letras y espacios'
+            ],
+            'DNI' => [
+                'required' => 'El DNI es obligatorio',
+                'numeric' => 'El DNI debe ser numérico',
+                'is_unique' => 'Este DNI ya está registrado'
+            ],
+            'email' => [
+                'required' => 'El email es obligatorio',
+                'valid_email' => 'Debe ingresar un email válido',
+                'is_unique' => 'Este email ya está registrado'
+            ]
         ]);
 
-        return redirect()->to('/alumnos');
+        if (!$validation->withRequest($this->request)->run()) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        }
+
+        $model = new AlumnoModel();
+
+        $inserted = $model->insert([
+            'Nombre_Completo' => trim($this->request->getPost('Nombre_Completo')),
+            'DNI' => trim($this->request->getPost('DNI')),
+            'Email' => strtolower(trim($this->request->getPost('email')))
+        ]);
+
+        if ($inserted) {
+            return redirect()->to('/alumnos')->with('message', 'Alumno creado exitosamente');
+        }
+
+        return redirect()->back()->withInput()->with('error', 'Error al crear el alumno');
     }
 
     public function edit($id)
     {
-        $model = new AlumnoModel();
-        $data['alumno'] = $model->find($id);
+        // Validar que ID sea numérico
+        if (!is_numeric($id) || $id <= 0) {
+            return redirect()->to('/alumnos')->with('error', 'ID inválido');
+        }
 
+        $model = new AlumnoModel();
+        $alumno = $model->find($id);
+
+        if (!$alumno) {
+            return redirect()->to('/alumnos')->with('error', 'Alumno no encontrado');
+        }
+
+        $data['alumno'] = $alumno;
         return view('alumnos/edit', $data);
     }
 
     public function update($id)
     {
-        $model = new AlumnoModel();
+        // Validar que ID sea numérico
+        if (!is_numeric($id) || $id <= 0) {
+            return redirect()->to('/alumnos')->with('error', 'ID inválido');
+        }
 
-        $model->update($id, [
-            'Nombre_Completo' => $this->request->getPost('Nombre_Completo'),
-            'DNI' => $this->request->getPost('DNI'),
-            'Email'  => $this->request->getPost('email')
+        $model = new AlumnoModel();
+        
+        // Verificar que el alumno existe
+        $alumno = $model->find($id);
+        if (!$alumno) {
+            return redirect()->to('/alumnos')->with('error', 'Alumno no encontrado');
+        }
+
+        // Validación de datos
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'Nombre_Completo' => 'required|min_length[3]|max_length[255]|alpha_space',
+            'DNI' => 'required|numeric|min_length[7]|max_length[8]|is_unique[alumnos.DNI,ID_Alumno,' . $id . ']',
+            'email' => 'required|valid_email|max_length[255]|is_unique[alumnos.Email,ID_Alumno,' . $id . ']'
+        ], [
+            'Nombre_Completo' => [
+                'required' => 'El nombre completo es obligatorio',
+                'min_length' => 'El nombre debe tener al menos 3 caracteres',
+                'alpha_space' => 'El nombre solo puede contener letras y espacios'
+            ],
+            'DNI' => [
+                'required' => 'El DNI es obligatorio',
+                'numeric' => 'El DNI debe ser numérico',
+                'is_unique' => 'Este DNI ya está registrado'
+            ],
+            'email' => [
+                'required' => 'El email es obligatorio',
+                'valid_email' => 'Debe ingresar un email válido',
+                'is_unique' => 'Este email ya está registrado'
+            ]
         ]);
 
-        return redirect()->to('/alumnos');
+        if (!$validation->withRequest($this->request)->run()) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        }
+
+        $updated = $model->update($id, [
+            'Nombre_Completo' => trim($this->request->getPost('Nombre_Completo')),
+            'DNI' => trim($this->request->getPost('DNI')),
+            'Email' => strtolower(trim($this->request->getPost('email')))
+        ]);
+
+        if ($updated) {
+            return redirect()->to('/alumnos')->with('message', 'Alumno actualizado exitosamente');
+        }
+
+        return redirect()->back()->withInput()->with('error', 'Error al actualizar el alumno');
     }
 
     public function delete($id)
     {
-        $model = new AlumnoModel();
-        $model->delete($id);
+        // Validar que ID sea numérico
+        if (!is_numeric($id) || $id <= 0) {
+            return redirect()->to('/alumnos')->with('error', 'ID inválido');
+        }
 
-        return redirect()->to('/alumnos');
+        $model = new AlumnoModel();
+        
+        // Verificar que el alumno existe
+        $alumno = $model->find($id);
+        if (!$alumno) {
+            return redirect()->to('/alumnos')->with('error', 'Alumno no encontrado');
+        }
+
+        // Verificar que no tenga inscripciones
+        $db = \Config\Database::connect();
+        $inscripciones = $db->table('inscripciones')
+            ->where('ID_Alumno', $id)
+            ->countAllResults();
+
+        if ($inscripciones > 0) {
+            return redirect()->to('/alumnos')->with('error', 'No se puede eliminar: el alumno tiene inscripciones activas');
+        }
+
+        // Verificar que no esté vinculado a un usuario
+        if (!empty($alumno['user_id'])) {
+            return redirect()->to('/alumnos')->with('error', 'No se puede eliminar: el alumno está vinculado a un usuario del sistema');
+        }
+
+        $deleted = $model->delete($id);
+
+        if ($deleted) {
+            return redirect()->to('/alumnos')->with('message', 'Alumno eliminado exitosamente');
+        }
+
+        return redirect()->to('/alumnos')->with('error', 'Error al eliminar el alumno');
     }
 
     /**
@@ -100,28 +216,38 @@ class Alumnos extends Controller
         }
 
         if (strtolower($this->request->getMethod()) === 'post') {
-            // Validación básica
-            $rules = [
-                'Nombre_Completo' => 'required|min_length[3]',
-                'DNI' => 'required',
-                'Email' => 'required|valid_email'
-            ];
+            // Validación completa con verificación de duplicados
+            $validation = \Config\Services::validation();
+            $validation->setRules([
+                'Nombre_Completo' => 'required|min_length[3]|max_length[255]|alpha_space',
+                'DNI' => 'required|numeric|min_length[7]|max_length[8]|is_unique[alumnos.DNI]',
+                'Email' => 'required|valid_email|max_length[255]|is_unique[alumnos.Email]'
+            ], [
+                'Nombre_Completo' => [
+                    'required' => 'El nombre completo es obligatorio',
+                    'min_length' => 'El nombre debe tener al menos 3 caracteres',
+                    'alpha_space' => 'El nombre solo puede contener letras y espacios'
+                ],
+                'DNI' => [
+                    'required' => 'El DNI es obligatorio',
+                    'numeric' => 'El DNI debe ser numérico',
+                    'is_unique' => 'Este DNI ya está registrado'
+                ],
+                'Email' => [
+                    'required' => 'El email es obligatorio',
+                    'valid_email' => 'Debe ingresar un email válido',
+                    'is_unique' => 'Este email ya está registrado'
+                ]
+            ]);
 
-            if (! $this->validate($rules)) {
-                $data = [
-                    'Nombre_Completo' => old('Nombre_Completo'),
-                    'Email' => old('Email'),
-                    'DNI' => old('DNI'),
-                    'validation' => $this->validator,
-                ];
-
-                return view('alumnos/completar_perfil', $data);
+            if (!$validation->withRequest($this->request)->run()) {
+                return redirect()->back()->withInput()->with('errors', $validation->getErrors());
             }
 
             $data = [
-                'Nombre_Completo' => $this->request->getPost('Nombre_Completo'),
-                'DNI' => $this->request->getPost('DNI'),
-                'Email' => $this->request->getPost('Email'),
+                'Nombre_Completo' => trim($this->request->getPost('Nombre_Completo')),
+                'DNI' => trim($this->request->getPost('DNI')),
+                'Email' => strtolower(trim($this->request->getPost('Email'))),
                 'user_id' => $identityId, // Ya mapeado al inicio del método
             ];
 
@@ -180,25 +306,38 @@ class Alumnos extends Controller
         }
 
         if (strtolower($this->request->getMethod()) === 'post') {
-            // Validación
-            $rules = [
-                'Nombre_Completo' => 'required|min_length[3]',
-                'DNI' => 'required',
-                'Email' => 'required|valid_email'
-            ];
+            // Validación completa con verificación de duplicados (excluyendo el registro actual)
+            $validation = \Config\Services::validation();
+            $validation->setRules([
+                'Nombre_Completo' => 'required|min_length[3]|max_length[255]|alpha_space',
+                'DNI' => 'required|numeric|min_length[7]|max_length[8]|is_unique[alumnos.DNI,ID_Alumno,' . $idAlumno . ']',
+                'Email' => 'required|valid_email|max_length[255]|is_unique[alumnos.Email,ID_Alumno,' . $idAlumno . ']'
+            ], [
+                'Nombre_Completo' => [
+                    'required' => 'El nombre completo es obligatorio',
+                    'min_length' => 'El nombre debe tener al menos 3 caracteres',
+                    'alpha_space' => 'El nombre solo puede contener letras y espacios'
+                ],
+                'DNI' => [
+                    'required' => 'El DNI es obligatorio',
+                    'numeric' => 'El DNI debe ser numérico',
+                    'is_unique' => 'Este DNI ya está registrado'
+                ],
+                'Email' => [
+                    'required' => 'El email es obligatorio',
+                    'valid_email' => 'Debe ingresar un email válido',
+                    'is_unique' => 'Este email ya está registrado'
+                ]
+            ]);
 
-            if (! $this->validate($rules)) {
-                $data = [
-                    'alumno' => $alumno,
-                    'validation' => $this->validator,
-                ];
-                return view('alumnos/editar_perfil', $data);
+            if (!$validation->withRequest($this->request)->run()) {
+                return redirect()->back()->withInput()->with('errors', $validation->getErrors());
             }
 
             $updateData = [
-                'Nombre_Completo' => $this->request->getPost('Nombre_Completo'),
-                'DNI' => $this->request->getPost('DNI'),
-                'Email' => $this->request->getPost('Email'),
+                'Nombre_Completo' => trim($this->request->getPost('Nombre_Completo')),
+                'DNI' => trim($this->request->getPost('DNI')),
+                'Email' => strtolower(trim($this->request->getPost('Email'))),
             ];
 
             try {
@@ -299,5 +438,31 @@ class Alumnos extends Controller
         $data['turnos'] = $builder->get()->getResultArray();
 
         return view('alumnos/inscribirse', $data);
+    }
+
+    /**
+     * Muestra las inscripciones del alumno autenticado
+     */
+    public function misInscripciones()
+    {
+        $idAlumno = session()->get('ID_Alumno');
+
+        if (!$idAlumno) {
+            return redirect()->to('alumnos/completarPerfil');
+        }
+
+        // Obtener inscripciones del alumno con información completa
+        $db = \Config\Database::connect();
+        $builder = $db->table('inscripciones i');
+        $builder->select('i.Fecha_Inscripcion, c.Nombre_Carrera, t.Turno, p.Nombre_Completo as Profesor_Nombre, p.Email as Profesor_Email');
+        $builder->join('carreras c', 'c.ID_Carrera = i.ID_Carrera', 'left');
+        $builder->join('turnos t', 't.ID_Turno = i.ID_Turno', 'left');
+        $builder->join('profesores p', 'p.ID_Profesor = t.ID_Profesor', 'left');
+        $builder->where('i.ID_Alumno', $idAlumno);
+        $builder->orderBy('i.Fecha_Inscripcion', 'DESC');
+        
+        $data['inscripciones'] = $builder->get()->getResultArray();
+
+        return view('alumnos/mis_inscripciones', $data);
     }
 }
