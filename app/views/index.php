@@ -192,6 +192,13 @@
                     <a href="#" class="btn-carrera">Más Información <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
+
+            <div class="text-center mt-5">
+                <a href="<?= site_url('carreras-completas') ?>" class="btn-hero btn-hero-primary">
+                    <i class="fas fa-graduation-cap"></i>
+                    Ver Todas las Carreras
+                </a>
+            </div>
         </div>
     </section>
 

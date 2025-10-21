@@ -8,8 +8,8 @@ class InscripcionModel extends Model
 {
     protected $table            = 'Inscripciones';
     // Tabla con clave primaria compuesta (ID_Alumno, ID_Turno).
-    // No usar primaryKey / autoIncrement en el modelo para evitar conflictos.
-    protected $primaryKey       = '';
+    // Usamos ID_Alumno como primaryKey para que el modelo funcione correctamente
+    protected $primaryKey       = 'ID_Alumno';
     protected $useAutoIncrement = false;
     protected $allowedFields    = [
         'ID_Alumno',
