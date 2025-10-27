@@ -6,6 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
+$routes->get('/carreras-completas', 'Home::verCarreras');
 
 service('auth')->routes($routes);
 
@@ -79,6 +80,7 @@ $routes->group('', ['filter' => 'group:alumno'], function($routes){
 	$routes->post('/alumnos/completarPerfil', 'Alumnos::completarPerfil');
 	$routes->get('/alumnos/editarPerfil', 'Alumnos::editarPerfil');
 	$routes->post('/alumnos/editarPerfil', 'Alumnos::editarPerfil');
+	$routes->get('/alumnos/misInscripciones', 'Alumnos::misInscripciones');
 });
 
 // Rutas para profesores (solo grupo 'profesor')
@@ -87,4 +89,10 @@ $routes->group('', ['filter' => 'group:profesor'], function($routes){
 	$routes->post('/profesores/completarPerfil', 'Profesores::completarPerfil');
 	$routes->get('/profesores/editarPerfil', 'Profesores::editarPerfil');
 	$routes->post('/profesores/editarPerfil', 'Profesores::editarPerfil');
+	
+	// Gestión de turnos del profesor
+	$routes->get('/profesores/crearTurno', 'Profesores::crearTurno');
+	$routes->post('/profesores/crearTurno', 'Profesores::crearTurno');
+	$routes->get('/profesores/misTurnos', 'Profesores::misTurnos');
+	$routes->get('/profesores/verInscriptos/(:num)', 'Profesores::verInscriptos/$1');
 });

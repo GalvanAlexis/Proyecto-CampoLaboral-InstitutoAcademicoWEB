@@ -8,4 +8,9 @@ class Home extends BaseController
     {
         return view('index');
     }
+
+    public function verCarreras()
+    {
+        return view('carreras_completas');
+    }
 }

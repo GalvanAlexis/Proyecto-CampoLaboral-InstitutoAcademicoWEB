@@ -42,6 +42,8 @@ body {
 
 .main-content {
     flex: 1;
+    padding-bottom: 150px;
+    min-height: calc(100vh - 200px);
 }
 
 /* ========================================
@@ -803,6 +805,35 @@ body {
 
 
 /* ========================================
+   Página de Carreras Completas
+   ======================================== */
+.page-header-carreras {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+    padding: 4rem 0 3rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.page-title-carreras {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.page-title-carreras i {
+    margin-right: 1rem;
+}
+
+.page-description-carreras {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ========================================
    Footer
    ======================================== */
 .footer-custom {
@@ -1036,10 +1067,13 @@ body {
 
 .table {
     margin-bottom: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .table thead th {
-    background-color: var(--primary-color);
+    background-color: #1e40af;
     color: white;
     font-weight: 600;
     border: none;
@@ -1048,15 +1082,20 @@ body {
 
 .table tbody tr {
     transition: var(--transition);
+    background-color: white;
 }
 
 .table tbody tr:hover {
-    background-color: var(--light-color);
+    background-color: #f3f4f6;
 }
 
 .table tbody td {
     padding: 1rem;
     vertical-align: middle;
+    background-color: white;
+    color: #1f2937;
+    font-weight: 500;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .actions-column {
@@ -1280,10 +1319,10 @@ body {
 
 .badge {
     display: inline-block;
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-radius: 12px;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 .badge-success {
@@ -1297,11 +1336,23 @@ body {
 }
 
 .badge-warning {
-    background-color: #fff3cd;
-    color: #856404;
+    background-color: #ffc107;
+    color: #000000;
 }
 
 .badge-info {
-    background-color: #d1ecf1;
-    color: #0c5460;
+    background-color: #17a2b8;
+    color: #000000;
+}
+
+.badge-primary {
+    background-color: #1e40af;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.badge-dark {
+    background-color: #343a40;
+    color: #ffffff;
+    font-weight: 700;
 }
