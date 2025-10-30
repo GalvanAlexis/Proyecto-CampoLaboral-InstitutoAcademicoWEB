@@ -161,12 +161,14 @@ class Alumnos extends Controller
             ->countAllResults();
 
         if ($inscripciones > 0) {
-            return redirect()->to('/alumnos')->with('error', 'No se puede eliminar: el alumno tiene inscripciones activas');
+            return redirect()->to('/alumnos')->with('error', 'No se puede eliminar: el alumno tiene ' . $inscripciones . ' inscripción(es) activa(s). Elimine primero las inscripciones.');
         }
 
-        // Verificar que no esté vinculado a un usuario
-        if (!empty($alumno['user_id'])) {
-            return redirect()->to('/alumnos')->with('error', 'No se puede eliminar: el alumno está vinculado a un usuario del sistema');
+        // Si tiene user_id vinculado (no NULL), desvincularlo antes de eliminar
+        if (isset($alumno['user_id']) && $alumno['user_id'] !== null) {
+            $db->table('alumnos')
+                ->where('ID_Alumno', $id)
+                ->update(['user_id' => null]);
         }
 
         $deleted = $model->delete($id);

@@ -12,7 +12,12 @@ class Usuarios extends Controller
     public function index()
     {
         $userModel = new UserModel();
+        
+        // Obtener solo usuarios activos (no eliminados)
         $data['usuarios'] = $userModel->findAll();
+        
+        // Opcional: mostrar usuarios eliminados (soft deleted) si existen
+        // $data['usuarios_eliminados'] = $userModel->onlyDeleted()->findAll();
 
         return view('usuarios/index', $data);
     }
@@ -94,9 +99,47 @@ class Usuarios extends Controller
 
     public function delete($id)
     {
+        // Validar que el ID sea numérico y positivo
+        if (!is_numeric($id) || $id <= 0) {
+            return redirect()->to('/usuarios')->with('error', 'ID de usuario inválido');
+        }
+        
         $userModel = new UserModel();
-        $userModel->delete($id);
+        
+        // Verificar que el usuario existe
+        $user = $userModel->withDeleted()->find($id);
+        if (!$user) {
+            return redirect()->to('/usuarios')->with('error', 'Usuario no encontrado');
+        }
+        
+        // Evitar que el usuario se elimine a sí mismo
+        if (auth()->id() == $id) {
+            return redirect()->to('/usuarios')->with('error', 'No puedes eliminar tu propia cuenta');
+        }
+        
+        // Desvincular automáticamente alumnos y profesores asociados antes de eliminar
+        $db = \Config\Database::connect();
+        
+        // Desvincular alumnos (establecer user_id a NULL)
+        $alumnosAfectados = $db->table('alumnos')->where('user_id', $id)->countAllResults();
+        if ($alumnosAfectados > 0) {
+            $db->table('alumnos')->where('user_id', $id)->update(['user_id' => null]);
+        }
+        
+        // Desvincular profesores (establecer user_id a NULL)
+        $profesoresAfectados = $db->table('profesores')->where('user_id', $id)->countAllResults();
+        if ($profesoresAfectados > 0) {
+            $db->table('profesores')->where('user_id', $id)->update(['user_id' => null]);
+        }
+        
+        // Eliminar permanentemente (borrado físico, no soft delete)
+        $userModel->delete($id, true);
 
-        return redirect()->to('/usuarios')->with('message', 'Usuario eliminado correctamente');
+        $mensaje = 'Usuario eliminado correctamente';
+        if ($alumnosAfectados > 0 || $profesoresAfectados > 0) {
+            $mensaje .= ' (se desvincularon ' . ($alumnosAfectados + $profesoresAfectados) . ' registro(s))';
+        }
+
+        return redirect()->to('/usuarios')->with('message', $mensaje);
     }
 }
