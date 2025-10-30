@@ -1,4 +1,4 @@
-CI_ENVIRONMENT = development
+CI_ENVIRONMENT = production
 
 app.baseURL = 'http://localhost/Proyecto-CampoLaboral-InstitutoAcademicoWEB/public/'
 

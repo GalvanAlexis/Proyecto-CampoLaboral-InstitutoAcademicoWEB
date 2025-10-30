@@ -1,6 +1,90 @@
 # Reporte de Auditoría de Seguridad
-**Fecha:** 21 de Octubre de 2025
+**Fecha:** 21 de Octubre de 2025  
+**Última Actualización:** 28 de Octubre de 2025  
 **Proyecto:** Instituto Superior de Educación - Sistema de Gestión
+
+---
+
+## ✅ CORRECCIONES IMPLEMENTADAS
+
+### 1. **Validaciones de Unicidad DNI y Email** ✅
+**Fecha de Corrección:** 21/10/2025
+**Controladores:** Alumnos, Profesores
+
+**Implementación:**
+- ✅ Validación `is_unique` en métodos `store()` y `update()`
+- ✅ Validación en `guardarPerfil()` y `actualizarPerfil()`
+- ✅ Migración con índices UNIQUE en base de datos
+- ✅ Mensajes de error personalizados en español
+
+### 2. **Borrado Físico de Usuarios** ✅
+**Fecha de Corrección:** 28/10/2025
+**Controlador:** Usuarios
+**Problema Resuelto:** Shield usaba soft deletes, usuarios permanecían en BD
+
+**Implementación:**
+- ✅ Cambio de `delete($id)` a `delete($id, true)` para borrado permanente
+- ✅ Validación de ID numérico y positivo
+- ✅ Verificación de existencia del usuario
+- ✅ Prevención de auto-eliminación
+- ✅ **Auto-desvinculación de alumnos/profesores antes de eliminar**
+- ✅ Mensaje informativo con cantidad de registros desvinculados
+- ✅ Script SQL para limpiar usuarios soft-deleted: `database/cleanup_soft_deleted_users.sql`
+
+**Comportamiento:**
+```php
+// Al eliminar un usuario:
+// 1. Desvincular automáticamente alumnos (user_id = NULL)
+// 2. Desvincular automáticamente profesores (user_id = NULL)
+// 3. Eliminar usuario permanentemente
+// 4. Mostrar: "Usuario eliminado (se desvincularon X registros)"
+```
+
+### 3. **Mejora en Eliminación de Alumnos y Profesores** ✅
+**Fecha de Corrección:** 28/10/2025
+**Controladores:** Alumnos, Profesores
+**Problema Resuelto:** No permitía eliminar registros con user_id vinculado (incluso huérfanos)
+
+**Implementación:**
+- ✅ Auto-desvinculación de `user_id` antes de eliminar
+- ✅ Manejo correcto de user_id huérfanos (usuarios ya eliminados)
+- ✅ Mensajes de error más descriptivos con contadores de relaciones
+- ✅ Validación de relaciones: inscripciones (alumnos) y turnos (profesores)
+- ✅ Comportamiento consistente entre ambos controladores
+
+**Comportamiento Actual:**
+```php
+// Profesores:
+// 1. Valida que no tenga turnos activos
+// 2. Si tiene user_id (válido o huérfano), se desvincula automáticamente
+// 3. Se elimina el profesor
+
+// Alumnos:
+// 1. Valida que no tenga inscripciones activas
+// 2. Si tiene user_id (válido o huérfano), se desvincula automáticamente
+// 3. Se elimina el alumno
+```
+
+### 4. **Hardening de Seguridad - Exposición de Queries SQL** ✅
+**Fecha de Corrección:** 30/10/2025
+**Archivos:** database.php, Toolbar.php, debug.js
+**Problema Resuelto:** Debug Toolbar y DBDebug exponían queries SQL completas
+
+**Auditoría Realizada:**
+- ✅ No se encontró código que use localStorage/sessionStorage para queries
+- ✅ No se encontró código JavaScript que exponga estructura de BD
+- ✅ Verificado que solo se envían datos procesados al frontend
+
+**Correcciones Aplicadas:**
+- ✅ Database Collector del Toolbar **deshabilitado** (no muestra queries)
+- ✅ DBDebug **condicional**: `(ENVIRONMENT !== 'production')`
+- ✅ collectVarData = **false** (no expone variables de vista)
+- ✅ maxHistory = **0** (no guarda historial de requests)
+- ✅ console.log() **eliminados** de debug.js
+- ✅ Logs de aplicación **protegidos** (solo accesibles en servidor)
+
+**Documentación:**
+- 📄 Creado `SECURITY_HARDENING.md` con detalles completos
 
 ---
 

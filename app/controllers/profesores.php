@@ -161,12 +161,14 @@ class Profesores extends Controller
             ->countAllResults();
 
         if ($turnos > 0) {
-            return redirect()->to('/profesores')->with('error', 'No se puede eliminar: el profesor tiene turnos asignados');
+            return redirect()->to('/profesores')->with('error', 'No se puede eliminar: el profesor tiene ' . $turnos . ' turno(s) asignado(s). Elimine primero los turnos.');
         }
 
-        // Verificar que no esté vinculado a un usuario
-        if (!empty($profesor['user_id'])) {
-            return redirect()->to('/profesores')->with('error', 'No se puede eliminar: el profesor está vinculado a un usuario del sistema');
+        // Si tiene user_id vinculado (no NULL), desvincularlo antes de eliminar
+        if (isset($profesor['user_id']) && $profesor['user_id'] !== null) {
+            $db->table('profesores')
+                ->where('ID_Profesor', $id)
+                ->update(['user_id' => null]);
         }
 
         $deleted = $model->delete($id);
