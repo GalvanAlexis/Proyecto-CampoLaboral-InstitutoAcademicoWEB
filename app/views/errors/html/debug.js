@@ -5,7 +5,7 @@ function init()
 {
     // Grab the tab links and content divs from the page
     var tabListItems = document.getElementById('tabs').childNodes;
-    console.log(tabListItems);
+    // console.log removed for security - no debug info in production
     for (var i = 0; i < tabListItems.length; i ++)
     {
         if (tabListItems[i].nodeName == "LI")
@@ -41,7 +41,7 @@ function init()
     {
         if (i != 0)
         {
-            console.log(contentDivs[id]);
+            // console.log removed for security - no debug info in production
             contentDivs[id].className = 'content hide';
         }
         i ++;

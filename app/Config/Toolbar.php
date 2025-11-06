@@ -35,7 +35,7 @@ class Toolbar extends BaseConfig
      */
     public array $collectors = [
         Timers::class,
-        Database::class,
+        // Database::class,  // ❌ DESHABILITADO: Expone queries SQL completas
         Logs::class,
         Views::class,
         // \CodeIgniter\Debug\Toolbar\Collectors\Cache::class,
@@ -52,7 +52,7 @@ class Toolbar extends BaseConfig
      * If set to false var data from the views will not be collected. Useful to
      * avoid high memory usage when there are lots of data passed to the view.
      */
-    public bool $collectVarData = true;
+    public bool $collectVarData = false; // Deshabilitado por seguridad
 
     /**
      * --------------------------------------------------------------------------
@@ -63,7 +63,7 @@ class Toolbar extends BaseConfig
      * helping to conserve file space used to store them. You can set it to
      * 0 (zero) to not have any history stored, or -1 for unlimited history.
      */
-    public int $maxHistory = 20;
+    public int $maxHistory = 0; // Sin historial por seguridad
 
     /**
      * --------------------------------------------------------------------------
